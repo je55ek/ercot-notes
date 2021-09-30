@@ -1,0 +1,2831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="author" content="Jesse Kelly"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/dist/theme/black.css" id="theme"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="table-of-contents-section">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-1">1. Concepts</a>
+<ul>
+<li><a href="#/slide-1-1">1.1. Ancillary Services</a>
+<ul>
+<li><a href="#/slide-1-1-1">1.1.1. Regulation Service</a></li>
+<li><a href="#/slide-1-1-2">1.1.2. Responsive Reserve Service</a></li>
+<li><a href="#/slide-1-1-3">1.1.3. Non-Spinning Reserve Service</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-2">1.2. Base Point</a></li>
+<li><a href="#/slide-1-3">1.3. Base Point Deviation Charge</a>
+<ul>
+<li><a href="#/slide-1-3-1">1.3.1. For Intermittent Renewable Resources</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-4">1.4. Bilateral Trade</a>
+<ul>
+<li><a href="#/slide-1-4-1">1.4.1. Energy Trade</a></li>
+<li><a href="#/slide-1-4-2">1.4.2. Capacity Trade</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-5">1.5. Capacity</a></li>
+<li><a href="#/slide-1-6">1.6. Capacity Obligation</a></li>
+<li><a href="#/slide-1-7">1.7. Capacity Supply</a></li>
+<li><a href="#/slide-1-8">1.8. Capacity Shortfall</a></li>
+<li><a href="#/slide-1-9">1.9. Congestion</a></li>
+<li><a href="#/slide-1-10">1.10. Congestion Rent</a></li>
+<li><a href="#/slide-1-11">1.11. Congestion Revenue Rights</a>
+<ul>
+<li><a href="#/slide-1-11-1">1.11.1. Point-to-Point Obligation</a></li>
+<li><a href="#/slide-1-11-2">1.11.2. Point-to-Point Option</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-12">1.12. Cost-Optimization Processes</a></li>
+<li><a href="#/slide-1-13">1.13. Current Operating Plan</a>
+<ul>
+<li><a href="#/slide-1-13-1">1.13.1. Resource Status</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-14">1.14. Day-Ahead Market Point-to-Point Obligation</a></li>
+<li><a href="#/slide-1-15">1.15. Distribution System</a></li>
+<li><a href="#/slide-1-16">1.16. Electrical Bus</a>
+<ul>
+<li><a href="#/slide-1-16-1">1.16.1. Load Substation</a></li>
+<li><a href="#/slide-1-16-2">1.16.2. Generator Substation</a></li>
+<li><a href="#/slide-1-16-3">1.16.3. Substation</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-17">1.17. Energy Emergency Alert</a></li>
+<li><a href="#/slide-1-18">1.18. Energy Offer Curve</a></li>
+<li><a href="#/slide-1-19">1.19. Resource Limits</a></li>
+<li><a href="#/slide-1-20">1.20. ERCOT-Polled Settlement Meter</a></li>
+<li><a href="#/slide-1-21">1.21. Financial</a>
+<ul>
+<li><a href="#/slide-1-21-1">1.21.1. Forward Market</a></li>
+<li><a href="#/slide-1-21-2">1.21.2. Hedging</a></li>
+<li><a href="#/slide-1-21-3">1.21.3. Bid</a></li>
+<li><a href="#/slide-1-21-4">1.21.4. Offer</a></li>
+<li><a href="#/slide-1-21-5">1.21.5. Sign Conventions</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-22">1.22. Full Interconnection Study</a></li>
+<li><a href="#/slide-1-23">1.23. Hub</a></li>
+<li><a href="#/slide-1-24">1.24. Inter-Control Center Communications Protocol</a></li>
+<li><a href="#/slide-1-25">1.25. Intermittent Renewable Resource</a>
+<ul>
+<li><a href="#/slide-1-25-1">1.25.1. Resource Types</a></li>
+<li><a href="#/slide-1-25-2">1.25.2. Telemetry</a></li>
+<li><a href="#/slide-1-25-3">1.25.3. Pricing</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-26">1.26. IRR Group</a></li>
+<li><a href="#/slide-1-27">1.27. Locational Marginal Price</a></li>
+<li><a href="#/slide-1-28">1.28. Market Information System</a></li>
+<li><a href="#/slide-1-29">1.29. Markets</a>
+<ul>
+<li><a href="#/slide-1-29-1">1.29.1. Day-Ahead Market</a></li>
+<li><a href="#/slide-1-29-2">1.29.2. Congestion Revenue Rights Auction</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-30">1.30. Minimum Energy Offer</a></li>
+<li><a href="#/slide-1-31">1.31. Net Load</a></li>
+<li><a href="#/slide-1-32">1.32. Network Operations Model</a></li>
+<li><a href="#/slide-1-33">1.33. Non Opt-in Entity</a></li>
+<li><a href="#/slide-1-34">1.34. Operating Reserve Demand Curve</a></li>
+<li><a href="#/slide-1-35">1.35. Peaker Net Margin</a>
+<ul>
+<li><a href="#/slide-1-35-1">1.35.1. Threshold</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-36">1.36. Probability of Exceedance</a></li>
+<li><a href="#/slide-1-37">1.37. Intermittent Renewable Resource Hourly Forecasting</a>
+<ul>
+<li><a href="#/slide-1-37-1">1.37.1. Short-Term Wind Power Forecast</a></li>
+<li><a href="#/slide-1-37-2">1.37.2. Wind Generation Resource Production Potential</a></li>
+<li><a href="#/slide-1-37-3">1.37.3. Short-Term Photovoltaic Power Forecast</a></li>
+<li><a href="#/slide-1-37-4">1.37.4. Photovoltaic Generation Resource Production Potential</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-38">1.38. Capacity Available Tool</a></li>
+<li><a href="#/slide-1-39">1.39. Point of Interconnect</a></li>
+<li><a href="#/slide-1-40">1.40. Primary Frequency Response</a></li>
+<li><a href="#/slide-1-41">1.41. Real-Time Dispatch</a></li>
+<li><a href="#/slide-1-42">1.42. Real-Time Energy Imbalance</a></li>
+<li><a href="#/slide-1-43">1.43. Regulated Entity</a></li>
+<li><a href="#/slide-1-44">1.44. Reliability Unit Commitment</a>
+<ul>
+<li><a href="#/slide-1-44-1">1.44.1. Day-Ahead Reliability Unit Commitment</a></li>
+<li><a href="#/slide-1-44-2">1.44.2. Hourly Reliability Unit Commitment</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-45">1.45. RUC Capacity Short Charge</a></li>
+<li><a href="#/slide-1-46">1.46. Resource</a></li>
+<li><a href="#/slide-1-47">1.47. Security Constrained Economic Dispatch</a></li>
+<li><a href="#/slide-1-48">1.48. Settlement Point</a>
+<ul>
+<li><a href="#/slide-1-48-1">1.48.1. Resource Node</a></li>
+<li><a href="#/slide-1-48-2">1.48.2. Load Zone</a></li>
+<li><a href="#/slide-1-48-3">1.48.3. Hub</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-49">1.49. Settlement Point Price</a>
+<ul>
+<li><a href="#/slide-1-49-1">1.49.1. Day-Ahead Settlement Point Price</a></li>
+<li><a href="#/slide-1-49-2">1.49.2. Real-Time Settlement Point Price</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-50">1.50. Real-Time Resource Meter Price</a></li>
+<li><a href="#/slide-1-51">1.51. Real-Time Reserve Price for On-Line Reserves</a></li>
+<li><a href="#/slide-1-52">1.52. Real-Time On-Line Reliability Deployment Price</a></li>
+<li><a href="#/slide-1-53">1.53. Startup Offer</a></li>
+<li><a href="#/slide-1-54">1.54. Subsynchronous Resonance</a></li>
+<li><a href="#/slide-1-55">1.55. System-Wide Offer Cap</a></li>
+<li><a href="#/slide-1-56">1.56. Time Periods</a>
+<ul>
+<li><a href="#/slide-1-56-1">1.56.1. Operating Hour</a></li>
+<li><a href="#/slide-1-56-2">1.56.2. Day-Ahead</a></li>
+<li><a href="#/slide-1-56-3">1.56.3. Operating Day</a></li>
+<li><a href="#/slide-1-56-4">1.56.4. Day-Ahead Engine</a></li>
+<li><a href="#/slide-1-56-5">1.56.5. Adjustment Period</a></li>
+<li><a href="#/slide-1-56-6">1.56.6. Hour Ahead</a></li>
+<li><a href="#/slide-1-56-7">1.56.7. Settlement Interval</a></li>
+<li><a href="#/slide-1-56-8">1.56.8. SCED Interval</a></li>
+</ul>
+</li>
+<li><a href="#/slide-1-57">1.57. Unit Reactive Limit</a></li>
+<li><a href="#/slide-1-58">1.58. Value of Lost Load</a></li>
+<li><a href="#/slide-1-59">1.59. Verbal Dispatch Instruction</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2">2. Market Participants</a>
+<ul>
+<li><a href="#/slide-2-1">2.1. Congestion Revenue Rights Account Holder</a>
+<ul>
+<li><a href="#/slide-2-1-1">2.1.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-2">2.2. Consumer</a>
+<ul>
+<li><a href="#/slide-2-2-1">2.2.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-3">2.3. Distribution Service Provider</a>
+<ul>
+<li><a href="#/slide-2-3-1">2.3.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-4">2.4. Electric Reliability Council of Texas</a>
+<ul>
+<li><a href="#/slide-2-4-1">2.4.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-5">2.5. Independent Market Monitor</a>
+<ul>
+<li><a href="#/slide-2-5-1">2.5.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-6">2.6. Load Serving Entity</a>
+<ul>
+<li><a href="#/slide-2-6-1">2.6.1. Relationships</a></li>
+<li><a href="#/slide-2-6-2">2.6.2. Types</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-7">2.7. Public Utility Commission of Texas</a>
+<ul>
+<li><a href="#/slide-2-7-1">2.7.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-8">2.8. Qualified Scheduling Entity</a>
+<ul>
+<li><a href="#/slide-2-8-1">2.8.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-9">2.9. Resource Entity</a>
+<ul>
+<li><a href="#/slide-2-9-1">2.9.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-10">2.10. Transmission Service Provider</a>
+<ul>
+<li><a href="#/slide-2-10-1">2.10.1. Relationships</a></li>
+</ul>
+</li>
+<li><a href="#/slide-2-11">2.11. Independent Market Information System Registered Entity</a></li>
+</ul>
+</li>
+<li><a href="#/slide-3">3. Ideas/Scratchpad</a></li>
+<li><a href="#/slide-4">4. Modeling</a>
+<ul>
+<li><a href="#/slide-4-1">4.1. Public Data</a>
+<ul>
+<li><a href="#/slide-4-1-1">4.1.1. Transmission Constraints</a></li>
+<li><a href="#/slide-4-1-2">4.1.2. Electrical Buses</a></li>
+</ul>
+</li>
+<li><a href="#/slide-4-2">4.2. Private Data</a>
+<ul>
+<li><a href="#/slide-4-2-1">4.2.1. CIM Network Model</a></li>
+</ul>
+</li>
+<li><a href="#/slide-4-3">4.3. Open Source Code</a></li>
+</ul>
+</li>
+<li><a href="#/slide-5">5. Nodal Protocols</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-1">
+<h2 id="1"><span class="section-number-2">1</span> Concepts</h2>
+<p>
+For ERCOT-provided definitions and acronyms, see <a href="http://www.ercot.com/content/wcm/current_guides/53528/02-040221_Nodal.docx">Section 2 of the ERCOT Nodal Protocols</a>.
+</p>
+</section>
+<section id="slide-1-1">
+<h3 id="1-1"><span class="section-number-3">1.1</span> Ancillary Services</h3>
+<p>
+Extra services ERCOT procures to help manage reliability of the transmission system.
+Acquired by ERCOT from QSEs primarily in the DAM, and by supplemental markets closer to real-time if needed.
+</p>
+</section>
+<section id="slide-1-1-1">
+<h4 id="1-1-1"><span class="section-number-4">1.1.1</span> Regulation Service</h4>
+<p class="forwardlink forwardlink">
+Used to manage the risk of sudden changes in <a href="#/slide-1-31" class="forwardlink">Net Load</a>, that is, to both changes in demand
+and changes in the output of <a href="#/slide-1-25" class="forwardlink">IRRs</a>.
+</p>
+
+<p>
+Matches generation with demand by responding to frequency deviations at generation resources.
+Issues instructions at a resolution of seconds to increase or decrease generation in-between Base Points.
+Must be capable of ramping through reserved capacity in 5 minutes or less.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Regulation Service Products</th>
+<th scope="col" class="org-left">General Response Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Regulation Up</td>
+<td class="org-left">within 5 sec</td>
+</tr>
+
+<tr>
+<td class="org-left">Regulation Down</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Fast Responding Regulation Up</td>
+<td class="org-left">within 60 cycles of ERCOT signal - or - By frequency trigger (+/- 0.09Hz)</td>
+</tr>
+
+<tr>
+<td class="org-left">Fast Responding Regulation Down</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Historical Net Load is used to determine how much Regulation will be required in the future.
+ERCOT determines each hourly need for Regulation based on two years of
+Net Load history for the month during which the hour occurs as follows:
+</p>
+<ol>
+<li>Take the 95th percentile of Regulation deployed during the same month over the
+previous two years.</li>
+<li>Take the 95th percentile of Net Load changes during the same month over the
+previous two years.</li>
+<li>Take the maximum of 1 and 2, this is the base regulation requirement.</li>
+<li>Add incremental MWs for additional Wind Generation added during the previous year.
+Details can be found in "Methodology for Determining Minimum Ancillary Service Requirements".</li>
+
+</ol>
+</section>
+<section id="slide-1-1-2">
+<h4 id="1-1-2"><span class="section-number-4">1.1.2</span> Responsive Reserve Service</h4>
+<p>
+Responds within minutes to things like loss of large generator or a large load-ramp.
+Must be fully deliverable within 10 minutes.
+Can provide additional capacity during an Energy Emergency Alert.
+</p>
+</section>
+<section id="slide-1-1-3">
+<h4 id="1-1-3"><span class="section-number-4">1.1.3</span> Non-Spinning Reserve Service</h4>
+<p class="forwardlink">
+Used to manage the risk of under-forecasting gradual changes in <a href="#/slide-1-31" class="forwardlink">Net Load</a>.
+Must be fully deliverable (synchronizing and ramping to specified output level) within 30 minutes.
+May be deployed to help with system-wide load that is larger than expected, or with local transmission issues.
+Must be capable of running at a specified output level for at least one hour.
+</p>
+</section>
+<section id="slide-1-2">
+<h3 id="1-2"><span class="section-number-3">1.2</span> Base Point</h3>
+<p>
+The level at which a generator (Resource?) has been instructed to produce
+power by ERCOT.
+</p>
+
+<p class="forwardlink">
+ERCOT issues Base Points to <a href="#/slide-1-25" class="forwardlink">IRRs</a>, but most of the time the Base Point
+is merely permissive.
+</p>
+</section>
+<section id="slide-1-3">
+<h3 id="1-3"><span class="section-number-3">1.3</span> Base Point Deviation Charge</h3>
+<p class="backwardlink">
+Assessed when a Resource's output is not close enough to its <a href="#/slide-1-2" class="backwardlink">Base Point</a>.
+</p>
+</section>
+<section id="slide-1-3-1">
+<h4 id="1-3-1"><span class="section-number-4">1.3.1</span> For Intermittent Renewable Resources</h4>
+<p class="forwardlink forwardlink">
+For an <a href="#/slide-1-25" class="forwardlink">IRR</a> to be charged for a Base Point deviation within a given Settlement Interval,
+the IRR must be curtailed for all <a href="#/slide-1-47" class="forwardlink">SCED</a> intervals within the Settlement Interval and
+the IRR must be over-generating (not under-generating) on average compared to their
+average Base Point during the Settlement Interval.
+</p>
+
+<p class="forwardlink">
+<a href="#/slide-1-25" class="forwardlink">IRRs</a> are allowed a wider tolerance from their Base Point than other Resources.
+</p>
+
+<p class="forwardlink">
+Note that <a href="#/slide-1-26" class="forwardlink">IRR Groups</a> are assessed as an aggregate when calculating the Base Point Deviation Charge.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Curtailment Flag</th>
+<th scope="col" class="org-left">IRR Output within 10% acceptable range</th>
+<th scope="col" class="org-left">IRR output exceeds 10% acceptable range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Not set</td>
+<td class="org-left">No Charge</td>
+<td class="org-left">No Charge</td>
+</tr>
+
+<tr>
+<td class="org-left">Set</td>
+<td class="org-left">No Charge</td>
+<td class="org-left">Charge</td>
+</tr>
+</tbody>
+</table>
+
+<p class="forwardlink">
+The charge is equal to the amount of over-generation times the maximum of 20 dollars or the <a href="#/slide-1-49-2" class="forwardlink">RTSPP</a>: 
+<code>Charge = Max(20, RTSPP) * [Average Output - (Base Point + 10% Tolerance)]</code>
+</p>
+</section>
+<section id="slide-1-4">
+<h3 id="1-4"><span class="section-number-3">1.4</span> Bilateral Trade</h3>
+<p>
+QSE to QSE transactions.
+Documented for ERCOT settlement purposes.
+Transfer the financial responsibility of providing energy from the buyer to the seller.
+Buyer ultimately receives credit for the energy during the ERCOT settlement process.
+</p>
+
+<p>
+QSEs can make different types of bilateral trades: Energy, Capacity, Ancillary Service.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Information Needed</th>
+<th scope="col" class="org-left">Energy Trade</th>
+<th scope="col" class="org-left">Capacity Trade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Buying QSE</td>
+<td class="org-left">Required</td>
+<td class="org-left">Required</td>
+</tr>
+
+<tr>
+<td class="org-left">Selling QSE</td>
+<td class="org-left">Required</td>
+<td class="org-left">Required</td>
+</tr>
+
+<tr>
+<td class="org-left">Settlement Point</td>
+<td class="org-left">Required</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MW quantity for each Settlement Interval</td>
+<td class="org-left">15 minute</td>
+<td class="org-left">Hourly</td>
+</tr>
+
+<tr>
+<td class="org-left">Deadline for Submission</td>
+<td class="org-left">1430, Day After Operating Day</td>
+<td class="org-left">End of Adjustment Period</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-1-4-1">
+<h4 id="1-4-1"><span class="section-number-4">1.4.1</span> Energy Trade</h4>
+<ul>
+<li>Affects real-time settlements by adjusting the energy supply or obligation for a given QSE.</li>
+<li>Affects settlements for subsequent RUCs</li>
+
+</ul>
+</section>
+<section id="slide-1-4-2">
+<h4 id="1-4-2"><span class="section-number-4">1.4.2</span> Capacity Trade</h4>
+<ul>
+<li>Affects settlements for subsequent RUCs</li>
+
+</ul>
+</section>
+<section id="slide-1-5">
+<h3 id="1-5"><span class="section-number-3">1.5</span> Capacity</h3>
+<p>
+Total MW capability of resources that are available to ERCOT during an operating hour.
+System Capacity = Ancillary Services Capacity + Available for Energy Dispatch
+</p>
+
+<p>
+There must be enough capacity to serve the Forecasted Load, but the capacity must
+also be distributed sufficiently to manage congestion of the transmission system.
+</p>
+
+<p>
+If market processes do not provide sufficient capacity, then the Reliability Unit Commitment
+process dispatches Resources to provide more capacity.
+</p>
+
+<p>
+QSEs are compelled to make capacity available for Energy Dispatch by the expected Settlement Point Prices for the Real-Time Market.
+</p>
+</section>
+<section id="slide-1-6">
+<h3 id="1-6"><span class="section-number-3">1.6</span> Capacity Obligation</h3>
+<p>
+A QSE may be required to provide capacity via one of the following transactions:
+</p>
+<ul>
+<li>Adjusted Metered Load</li>
+<li>Capacity Trades where QSE is seller</li>
+<li>Energy Trades where QSE is seller</li>
+<li>Cleared <a href="#/slide-1-29-1" class="forwardlink">DAM</a> Energy Offers</li>
+
+</ul>
+</section>
+<section id="slide-1-7">
+<h3 id="1-7"><span class="section-number-3">1.7</span> Capacity Supply</h3>
+<p>
+A QSE may arrange capacity supplies via one of the following transactions:
+</p>
+<ul>
+<li>Commitment of the QSE's Resources</li>
+<li>Capacity Trades in which the QSE is the buyer</li>
+<li>Energy Trades in which the QSE is the buyer</li>
+<li>Cleared <a href="#/slide-1-29-1" class="forwardlink">DAM</a> Energy Bids</li>
+
+</ul>
+</section>
+<section id="slide-1-8">
+<h3 id="1-8"><span class="section-number-3">1.8</span> Capacity Shortfall</h3>
+<p class="backwardlink backwardlink">
+A QSE's capacity shortfall is the difference between the capacity
+required to meet their <a href="#/slide-1-6" class="backwardlink">obligations</a> and the capacity they have
+<a href="#/slide-1-7" class="backwardlink">arranged</a>.
+A shortfall only exists if their obligations exceed their arranged
+capacity.
+</p>
+</section>
+<section id="slide-1-9">
+<h3 id="1-9"><span class="section-number-3">1.9</span> Congestion</h3>
+<p>
+When a path (transmission line, etc.) is loaded to its limit.
+Keeps us from dispatching additional load via that path.
+This leads to price separation between electrical buses.
+Price separation in Locational Marginal Price is always a sign of transmission congestion.
+</p>
+</section>
+<section id="slide-1-10">
+<h3 id="1-10"><span class="section-number-3">1.10</span> Congestion Rent</h3>
+<p>
+Difference in Locational Marginal Price between resource and load buses, multiplied by total load.
+Funds the Congestion Revenue Rights in the Day-Ahead Market.
+</p>
+</section>
+<section id="slide-1-11">
+<h3 id="1-11"><span class="section-number-3">1.11</span> Congestion Revenue Rights</h3>
+<p>
+Monthly financial instruments that can be purchased by CRR Account Holders
+that may pay or charge the CRR Account Holder if congestion exists on the
+ERCOT system.
+May be used:
+</p>
+<ul>
+<li>To hedge actual power delivery costs</li>
+<li>As investments</li>
+
+</ul>
+<p>
+Purchased at auction price and cashed out (settled) at DAM price spread
+between two Settlement Points.
+Auctioned the following time-of-use blocks in one month strips:
+</p>
+<ul>
+<li>Off-Peak (0100-0600 and 2200-0000)</li>
+<li>Peak Weekday (0700-2200)</li>
+<li>Peak Weekend (0700-2200)</li>
+
+</ul>
+</section>
+<section id="slide-1-11-1">
+<h4 id="1-11-1"><span class="section-number-4">1.11.1</span> Point-to-Point Obligation</h4>
+<p>
+May provide the holder with a payment or charge in the DAM.
+</p>
+</section>
+<section id="slide-1-11-2">
+<h4 id="1-11-2"><span class="section-number-4">1.11.2</span> Point-to-Point Option</h4>
+<p>
+May provide the holder with a payment in DAM.
+</p>
+</section>
+<section id="slide-1-12">
+<h3 id="1-12"><span class="section-number-3">1.12</span> Cost-Optimization Processes</h3>
+<p>
+Reliability-focused processes where we must obtain some reliability goal at the least cost.
+In contrast to Market processes, these processes have no Bids from buyers, only Offers from sellers.
+Buyers are simply "price-takers".
+Cost is optimized by clearing the lowest Offers first until the required goal (such as number of MW needed) is met.
+Real-Time Dispatch is an example of this type of process.
+</p>
+</section>
+<section id="slide-1-13">
+<h3 id="1-13"><span class="section-number-3">1.13</span> Current Operating Plan</h3>
+<p>
+Submitted by a QSE for each of their generating Resources.
+Shows, for each hour of the next 7 days:
+</p>
+<ul>
+<li>Resource Status (on/off/out-of-service)</li>
+<li>Resource Limits</li>
+<li>Ancillary Service Commitments</li>
+
+</ul>
+
+<p class="forwardlink">
+May be updated until the end of the <a href="#/slide-1-56-5" class="forwardlink">Adjustment Period</a>.
+Must be updated within 60 minutes of any event that impacts status or capabilities.
+</p>
+</section>
+<section id="slide-1-13-1">
+<h4 id="1-13-1"><span class="section-number-4">1.13.1</span> Resource Status</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Status</th>
+<th scope="col" class="org-left">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ON</td>
+<td class="org-left">QSE has committed to run the Resource</td>
+</tr>
+
+<tr>
+<td class="org-left">OFF</td>
+<td class="org-left">Resource is offline, but available for RUC commitment</td>
+</tr>
+
+<tr>
+<td class="org-left">OUT</td>
+<td class="org-left">Resource is not available</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-1-14">
+<h3 id="1-14"><span class="section-number-3">1.14</span> Day-Ahead Market Point-to-Point Obligation</h3>
+<p>
+Hourly financial instrument used to hedge real-time congestion cost.
+Defined between two Settlement Points, Source and Sink.
+In the DAM, a QSE pays <code>(Sink - Source) * Award</code>, where
+</p>
+<ul>
+<li><code>Sink</code> is the DAM SPP at the Sink</li>
+<li><code>Source</code> is the DAM SPP at the Source</li>
+<li><code>Award</code> is the number of MWh awarded to the QSE in the DAM along the link</li>
+
+</ul>
+<p>
+Then, in the RTM, a QSE is paid <code>(Sink - Source) * Actual</code>, where
+</p>
+<ul>
+<li><code>Sink</code> is the RT SPP at the Sink</li>
+<li><code>Source</code> is the RT SPP at the Source</li>
+<li><code>Award</code> is the number of MWh awarded to the QSE in the DAM along the link</li>
+
+</ul>
+</section>
+<section id="slide-1-15">
+<h3 id="1-15"><span class="section-number-3">1.15</span> Distribution System</h3>
+<p>
+All lines and equipment below 60kV.
+ERCOT does not model or manage any Distribution System.
+</p>
+</section>
+<section id="slide-1-16">
+<h3 id="1-16"><span class="section-number-3">1.16</span> Electrical Bus</h3>
+<p class="forwardlink forwardlink">
+The most granular point modeled in the ERCOT transmission system.
+ERCOT calculates a <a href="#/slide-1-27" class="forwardlink">Locational Marginal Price</a> for every Electrical Bus in the system.
+A bus typically is, but may not be, part of a particular <a href="#/slide-1-48" class="forwardlink">Settlement Point</a>.
+Generally speaking, an Electrical Bus is an electrical substation.
+</p>
+</section>
+<section id="slide-1-16-1">
+<h4 id="1-16-1"><span class="section-number-4">1.16.1</span> Load Substation</h4>
+<p>
+Where transmission voltage is stepped down to distribute power to a neighborhood or business district.
+</p>
+</section>
+<section id="slide-1-16-2">
+<h4 id="1-16-2"><span class="section-number-4">1.16.2</span> Generator Substation</h4>
+<p>
+Where a Generation Resource connects to the grid.
+</p>
+</section>
+<section id="slide-1-16-3">
+<h4 id="1-16-3"><span class="section-number-4">1.16.3</span> Substation</h4>
+<p>
+Where two different utilities tie their systems together.
+</p>
+</section>
+<section id="slide-1-17">
+<h3 id="1-17"><span class="section-number-3">1.17</span> Energy Emergency Alert</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Level</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Level 1</td>
+<td class="org-left"><a href="#/slide-1-46-0-4-2" class="forwardlink">ERS-30</a> may be deployed</td>
+</tr>
+
+<tr>
+<td class="org-left">Level 2</td>
+<td class="org-left"><a href="#/slide-1-46-0-4-1" class="forwardlink">ERS-10</a> and undeployed <a href="#/slide-1-46-0-4-2" class="forwardlink">ERS-30</a> shall be deployed</td>
+</tr>
+
+<tr>
+<td class="org-left">Level 3</td>
+<td class="org-left">Firm load shed ordered</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-1-18">
+<h3 id="1-18"><span class="section-number-3">1.18</span> Energy Offer Curve</h3>
+<p>
+Incremental cost of operating a generation resource as a function of MW of output.
+This function is typically monotonically increasing.
+</p>
+
+<p class="forwardlink">
+May be submitted or updated by QSEs up until the end of the <a href="#/slide-1-56-5" class="forwardlink">Adjustment Period</a>.
+</p>
+
+<p>
+Represented in the ERCOT system with:
+</p>
+<ul>
+<li>Up to 10 price/quantity pairs</li>
+<li>Minimum allowable quantity of 1 MW</li>
+<li>Allowable price range of -$250 to $9000</li>
+
+</ul>
+
+<div id="org383a807" class="figure">
+<p><img src="./attachments/ercot/img/energy-offer-curve.png" alt="energy-offer-curve.png" />
+</p>
+</div>
+</section>
+<section id="slide-1-19">
+<h3 id="1-19"><span class="section-number-3">1.19</span> Resource Limits</h3>
+
+<div id="org1abe9bf" class="figure">
+<p><img src="./attachments/ercot/limits.png" alt="limits.png" />
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="1-19-0-1"></a>High Sustained Limit<br />
+<p>
+For an IRR, it is the current net output capability,
+based on current conditions such as wind/irradiance and how many
+turbines/inverters are online.
+</p>
+</li>
+<li><a id="1-19-0-2"></a>Low Sustained Limit<br /></li>
+<li><a id="1-19-0-3"></a>High Dispatch Limit<br /></li>
+<li><a id="1-19-0-4"></a>Low Dispatch Limit<br /></li>
+</ol>
+</section>
+<section id="slide-1-20">
+<h3 id="1-20"><span class="section-number-3">1.20</span> ERCOT-Polled Settlement Meter</h3>
+</section>
+<section id="slide-1-21">
+<h3 id="1-21"><span class="section-number-3">1.21</span> Financial</h3>
+<div class="outline-text-3" id="text-1-21">
+</div>
+</section>
+<section id="slide-1-21-1">
+<h4 id="1-21-1"><span class="section-number-4">1.21.1</span> Forward Market</h4>
+<p>
+A market that sets the price of a financial instrument or asset for future delivery.
+A platform on which hedging takes place.
+</p>
+</section>
+<section id="slide-1-21-2">
+<h4 id="1-21-2"><span class="section-number-4">1.21.2</span> Hedging</h4>
+<p>
+Transacting at a known price now to protect from having to transact at an unknown price later.
+</p>
+</section>
+<section id="slide-1-21-3">
+<h4 id="1-21-3"><span class="section-number-4">1.21.3</span> Bid</h4>
+<p>
+Economic representative of "demand".
+A proposal to buy a product at a specific location for a particular price.
+The buyer is always happy to pay <b>less</b>.
+</p>
+</section>
+<section id="slide-1-21-4">
+<h4 id="1-21-4"><span class="section-number-4">1.21.4</span> Offer</h4>
+<p>
+Economic representative of "supply".
+A proposal to sell a product at a specific location for a particular price.
+The seller is always happy to be paid <b>more</b>.
+</p>
+</section>
+<section id="slide-1-21-5">
+<h4 id="1-21-5"><span class="section-number-4">1.21.5</span> Sign Conventions</h4>
+<ul>
+<li>Charge for awarded Energy Bid is positive, money flows into ERCOT</li>
+<li>Payment for awarded Energy Offer is negative, money flows out of ERCOT</li>
+
+</ul>
+</section>
+<section id="slide-1-22">
+<h3 id="1-22"><span class="section-number-3">1.22</span> Full Interconnection Study</h3>
+<p class="forwardlink">
+Conducted by a Transmission Service Provider when a company requests interconnection
+of a new <a href="#/slide-1-25" class="forwardlink">Intermittent Renewable Resource</a>.
+The report highlights the nature and severity of any potential constraints that
+the proposed IRR might face if the company chooses to interconnect at a specific
+proposed location.
+</p>
+</section>
+<section id="slide-1-23">
+<h3 id="1-23"><span class="section-number-3">1.23</span> Hub</h3>
+<p>
+A group of 345 kV buses within a geographic region.
+There are seven hubs in ERCOT:
+</p>
+<ul>
+<li>North</li>
+<li>South</li>
+<li>West</li>
+<li>Houston</li>
+<li>Panhandle</li>
+<li>ERCOT Hub Average</li>
+<li>ERCOT Bus Average</li>
+
+</ul>
+</section>
+<section id="slide-1-24">
+<h3 id="1-24"><span class="section-number-3">1.24</span> Inter-Control Center Communications Protocol</h3>
+<p>
+<a href="http://www.ercot.com/content/wcm/lists/89522/ERCOT_Nodal_ICCP_Communications_Handbook_v3-10.docx">Handbook</a>
+</p>
+</section>
+<section id="slide-1-25">
+<h3 id="1-25"><span class="section-number-3">1.25</span> Intermittent Renewable Resource</h3>
+<p>
+A Generation Resource that can only produce energy from variable, uncontrollable
+resources, such as wind, solar, or run-of-the-river hydroelectricity.
+</p>
+
+<p>
+IRRs always run at max capability (unless curtailed) with a permissive Base Point.
+This is in contrast to non-IRRs, that seek to match their Base Points, which typically
+are not at those resources' max capability.
+</p>
+
+<p>
+IRRs generally do not participate in the Day-Ahead Market.
+</p>
+
+<p>
+The ramp rate of an IRR is limited to 20% of the resource's Nameplate Rating per minute.
+This means that when curtailed by ERCOT, an IRR must go from full output to zero output in no less than 5 minutes.
+When released from curtailment, the IRR must go from zero output to full output in no less than 5 minutes.
+</p>
+
+<p>
+ERCOT may request shutdown of IRRs when their output is below 10% of their Nameplate Rating.
+</p>
+</section>
+<section id="slide-1-25-1">
+<h4 id="1-25-1"><span class="section-number-4">1.25.1</span> Resource Types</h4>
+<p>
+There are currently two types of IRRs in ERCOT.
+</p>
+<ol class="org-ol">
+<li><a id="1-25-1-1"></a>Wind-Powered Generation Resource<br />
+<p>
+An aggregation of wind turbines on the same Electrical Bus.
+Generally, each wind turbine must be of the same model and size, although
+there are exceptions to this rule (Protocol 3.10.7.2 (11)).
+The resource must not reduce ERCOT's ability to model the grid.
+</p>
+
+<p class="backwardlink forwardlink backwardlink backwardlink">
+ERCOT updates the <a href="#/slide-1-13" class="backwardlink">COP</a> <a href="#/slide-1-19-0-1" class="backwardlink">HSL</a> to the <a href="#/slide-1-37-1" class="forwardlink">STWPF</a> for the first 168 hours of the <a href="#/slide-1-13" class="backwardlink">COP</a>
+for a WGR, but the resource's QSE may override to a lesser value.
+</p>
+</li>
+<li><a id="1-25-1-2"></a>PhotoVoltaic Generation Resource<br />
+<p class="backwardlink forwardlink backwardlink backwardlink">
+ERCOT updates the <a href="#/slide-1-13" class="backwardlink">COP</a> <a href="#/slide-1-19-0-1" class="backwardlink">HSL</a> to the <a href="#/slide-1-37-3" class="forwardlink">STPPF</a> for the first 168 hours of the <a href="#/slide-1-13" class="backwardlink">COP</a>
+for a PVGR, but the resource's QSE may override to a lesser value.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-1-25-2">
+<h4 id="1-25-2"><span class="section-number-4">1.25.2</span> Telemetry</h4>
+<p>
+More telemetry is required for IRRs compared to traditional generation resources.
+</p>
+<ol class="org-ol">
+<li><a id="1-25-2-1"></a>Meteorological Tower Data<br />
+<p>
+Measured at the IRR site and reported by the QSE through ICCP Telemetry every 10 seconds.
+Includes:
+</p>
+<ul>
+<li>Wind Speed</li>
+<li>Wind Direction</li>
+<li>Temperature</li>
+<li>Barometric Pressure</li>
+<li>Back Panel Temperature (for PVGRs)</li>
+<li>Plane of Array Irradiance (for PVGRs)</li>
+
+</ul>
+</li>
+<li><a id="1-25-2-2"></a>Resource Telemetry<br />
+<p>
+Operational data that indicates the current condition and capabilities of the IRR.
+Reported by the QSE every 2 to 10 seconds, depending on type of datapoint.
+</p>
+<ul>
+<li>Resource status</li>
+<li>Power output (MW &amp; MVAR)</li>
+<li>High Sustained Limit</li>
+<li>Number of turbines (inverters for PVGRs) online, offline, and unknown</li>
+
+</ul>
+</li>
+<li><a id="1-25-2-3"></a>Outage<br />
+<p>
+Resource availability data reported by the QSE through the Outage Scheduler.
+There are two types:
+</p>
+
+<ul>
+<li>Outage - A Resource that has been removed from service</li>
+<li>Forced Derate - A portion of a Resource that has been removed from service</li>
+
+</ul>
+
+<p>
+A Forced Derate occurs when a resource loses 10 MW or 5% of its Seasonal Net Max Sustainable Rating due to equipment malfunction,
+and must only be reported if it is expected to last more than 48 hours.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-1-25-3">
+<h4 id="1-25-3"><span class="section-number-4">1.25.3</span> Pricing</h4>
+<p>
+Because an IRR is always running at its maximum possible output,
+setting a low price for its power ensures that it is "dispatched" by SCED.
+<img src="./attachments/ercot/img/irr-pricing-1.png" alt="irr-pricing-1.png" />
+</p>
+
+<p>
+When there are transmission constraints, the IRR is curtailed.
+While curtailed, the HSL should still represent current net output capability
+of the IRR.
+<img src="./attachments/ercot/img/irr-pricing-2.png" alt="irr-pricing-2.png" />
+</p>
+</section>
+<section id="slide-1-26">
+<h3 id="1-26"><span class="section-number-3">1.26</span> IRR Group</h3>
+<p class="backwardlink">
+A group of two or more <a href="#/slide-1-25" class="backwardlink">IRRs</a> whose performance in responding to Dispatch
+Instructions will be assessed as an aggregate.
+All IRRs in the group must have the same Resource Node, and there are no
+Split Generation Resources allowed in an IRR Group.
+Each IRR in the group is dispatched and metered separately.
+</p>
+</section>
+<section id="slide-1-27">
+<h3 id="1-27"><span class="section-number-3">1.27</span> Locational Marginal Price</h3>
+<p class="forwardlink forwardlink backwardlink">
+The cost to serve one additional unit of load at an <a href="#/slide-1-16" class="backwardlink">Electrical Bus</a>.
+LMPs are the building blocks for <a href="#/slide-1-49" class="forwardlink">Settlement Point Prices</a>.
+ERCOT does not adjust LMP to account for transmission losses, rather it considers losses part of load.
+Note that the LMP is not the "type" of quantity used to settle energy;
+<a href="#/slide-1-49" class="forwardlink">Settlement Point Prices</a>, which are calculated from LMPs (and may even have the same <b>value</b> as an LMP),
+are the "type" of quantity used for financial settlement.
+</p>
+</section>
+<section id="slide-1-28">
+<h3 id="1-28"><span class="section-number-3">1.28</span> Market Information System</h3>
+<p>
+Provides data to the market participants and the general public, including:
+</p>
+<ul>
+<li>System Conditions</li>
+<li>Forecasts</li>
+<li>Market Awards</li>
+<li>Prices</li>
+<li>ERCOT Applications</li>
+<li>Settlement Data</li>
+
+</ul>
+</section>
+<section id="slide-1-29">
+<h3 id="1-29"><span class="section-number-3">1.29</span> Markets</h3>
+<p>
+Processes that have both Bids and Offers as inputs.
+Transactions only occur so long as there are compatible Bids and Offers present.
+Market processes optimize for value by clearing the highest bids and lowest offers until sellers are no longer willing to accept what buyers are willing to pay.
+</p>
+</section>
+<section id="slide-1-29-1">
+<h4 id="1-29-1"><span class="section-number-4">1.29.1</span> Day-Ahead Market</h4>
+<p>
+A centralized forward market in which QSEs bid and offer on energy and offer Ancillary Services.
+Facilitated and cleared by ERCOT.
+Clearing co-optimizes for energy and Ancillary Services across an entire day subject to the constraints imposed by the Network Model.
+Inputs:
+</p>
+<ul>
+<li>Bids</li>
+<li>Offers</li>
+<li>Network Model</li>
+
+</ul>
+<p>
+Outputs:
+</p>
+<ul>
+<li>Hourly Awards</li>
+<li>Hourly Prices</li>
+
+</ul>
+<ol class="org-ol">
+<li><a id="1-29-1-1"></a>Offer Types<br />
+<ol class="org-ol">
+<li><a id="1-29-1-1-1"></a>Supply Offer<br />
+<p>
+Comprised of a Startup Offer, a Minimum Energy Offer, and an Energy Offer Curve.
+</p>
+</li>
+<li><a id="1-29-1-1-2"></a>Day-Ahead Market Energy-Only Offer<br />
+<p>
+An offer to sell energy that is not backed up by physical generation capacity.
+May be offered at any Settlement Point.
+When awarded, a QSE is paid the Day-Ahead settlement point price,
+then must buy the awarded amount of energy the following day in the Real-Time
+market at the Real-Time Settlement Point Price.
+This provides an opportunity to make money when Real-Time prices are lower than Day-Ahead prices.
+Tends to drive Day-Ahead and Real-Time prices closer together.
+</p>
+</li>
+<li><a id="1-29-1-1-3"></a>Ancillary Service Offer<br />
+<p>
+Offered at a specific resource, primarily in the DAM.
+May be:
+</p>
+<ul>
+<li>Regulation Up</li>
+<li>Regulation Down</li>
+<li>Responsive Reserve</li>
+<li>Non-Spinning Reserve</li>
+
+</ul>
+<p>
+A single resource may be used to make multiple AS offers, as well as AS and Supply offers.
+</p>
+</li>
+</ol>
+</li>
+<li><a id="1-29-1-2"></a>Bid Types<br />
+<ol class="org-ol">
+<li><a id="1-29-1-2-1"></a>Energy Bid<br />
+<p>
+A proposal to buy energy in the Day-Ahead Market.
+May be bid at any Settlement Point.
+When awarded, a QSE pays the Day-Ahead Settlement Point Price and is given a credit in the Real-Time market for the energy awarded.
+Then, in Real-Time, if the QSE:
+</p>
+<ul>
+<li>Has load         , the credit offsets the energy they must buy to serve the load</li>
+<li>Doesn't have load, they are paid for the credited amount of energy at the Real-Time Settlement Point Price</li>
+
+</ul>
+<p>
+Provides an opportunity for a QSE with no load to make money when Day-Ahead prices are lower than Real-Time prices.
+</p>
+</li>
+<li><a id="1-29-1-2-2"></a>PTP Obligation Bid<br />
+<p>
+Defined by:
+</p>
+<ul>
+<li>Two Settlement Points: a Source and a Sink.</li>
+<li>A MW quantity</li>
+<li>The <code>Sink - Source</code> SPP difference willing to pay</li>
+
+</ul>
+<p>
+Being awarded a bid results in either a payment or a charge in the Real-Time Market.
+A QSE specifies the MW quantity
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="slide-1-29-2">
+<h4 id="1-29-2"><span class="section-number-4">1.29.2</span> Congestion Revenue Rights Auction</h4>
+<p>
+Forward financial market for trading Congestion Revenue Rights.
+Clearing optimizes for an entire month subject to the constraints imposed by the Network Model.
+Schedule of CRR auctions is developed years in advance.
+Inputs:
+</p>
+<ul>
+<li>Bids</li>
+<li>Offers</li>
+<li>Network Model</li>
+
+</ul>
+<p>
+Outputs:
+</p>
+<ul>
+<li>Awards</li>
+<li>Prices</li>
+
+</ul>
+</section>
+<section id="slide-1-30">
+<h3 id="1-30"><span class="section-number-3">1.30</span> Minimum Energy Offer</h3>
+<p>
+Hourly cost to run the resource at its minimum operating level.
+</p>
+</section>
+<section id="slide-1-31">
+<h3 id="1-31"><span class="section-number-3">1.31</span> Net Load</h3>
+<p class="backwardlink">
+The combination of variable <a href="#/slide-1-25" class="backwardlink">IRR</a> output with variable system load.
+</p>
+</section>
+<section id="slide-1-32">
+<h3 id="1-32"><span class="section-number-3">1.32</span> Network Operations Model</h3>
+<p>
+Computer model that represents physical ERCOT transmission grid.
+Used for reliability studies and all market processes.
+</p>
+</section>
+<section id="slide-1-33">
+<h3 id="1-33"><span class="section-number-3">1.33</span> Non Opt-in Entity</h3>
+<p>
+Municipal utilities or electric cooperatives who have chosen not to offer retail competition in their service territories.
+</p>
+</section>
+<section id="slide-1-34">
+<h3 id="1-34"><span class="section-number-3">1.34</span> Operating Reserve Demand Curve</h3>
+<p>
+Enhances generation price signals in the Real-Time Market.
+Uses a Real-Time Reserve Price Adder to reflect the value of real-time reserves.
+Reflects the value of avoiding load-shedding events (Value of Lost Load).
+Each point on the curve is based on the probability that ERCOT would have a load-shedding event (based on historical data).
+</p>
+
+<p>
+Varies by season and by time of day, but in general, curve is shaped like:
+<img src="./attachments/ercot/img/ordc.png" alt="ordc.png" />
+</p>
+</section>
+<section id="slide-1-35">
+<h3 id="1-35"><span class="section-number-3">1.35</span> Peaker Net Margin</h3>
+<p>
+A representation of the net revenue a Peaker Resource could have captured
+while generating in the Real-Time Market during high-demand and high-price events.
+</p>
+
+<p>
+Calculated every 15 minutes by approximating the total revenue available to all online
+resources during the Real-Time Market and subtracting the approximate operating cost for a
+Peaker Resource.
+</p>
+
+<p>
+A 15-minute value of when the Real-Time Energy Price is greater than operating costs of a Peaker Resource.
+</p>
+
+<p>
+PNM = Max[(RTEP - POC) * 1/4 h, 0]
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">RTEP</td>
+<td class="org-left">Real-Time Energy Price</td>
+<td class="org-left">HB<sub>HUBAVG</sub></td>
+</tr>
+
+<tr>
+<td class="org-left">POC</td>
+<td class="org-left">Peaker Operating Cost</td>
+<td class="org-left">10 * Fuel Index Price</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+HB<sub>HUBAVG</sub> is the Ercot Hub Average Hub Price.
+The Fuel Index Price is the daily Houston Ship Channel Gas Price Index for the previous business day.
+</p>
+</section>
+<section id="slide-1-35-1">
+<h4 id="1-35-1"><span class="section-number-4">1.35.1</span> Threshold</h4>
+<p>
+Three times the cost of entry for new generation (currently $315,000 per MW).
+</p>
+
+<p>
+When the sum of the Peaker Net Margin (across every 15-minute interval throughout the year) is greater
+than or equal to the threshold, the SWCAP is reduced for the remainder of the year to
+Max[$2000, (50 * Fuel Index Price)].
+</p>
+</section>
+<section id="slide-1-36">
+<h3 id="1-36"><span class="section-number-3">1.36</span> Probability of Exceedance</h3>
+<p>
+An hourly time series of MW values that an IRR's generation output is
+forecasted to exceed with a certain probability.
+For example, the 50% POE for a given IRR might be 10 MW at 11 AM, 14 MW at 12 PM, etc.
+Calculated from an ensemble of hourly forecast models for IRR resource types.
+</p>
+</section>
+<section id="slide-1-37">
+<h3 id="1-37"><span class="section-number-3">1.37</span> Intermittent Renewable Resource Hourly Forecasting</h3>
+<p class="backwardlink">
+Only the QSE representing an IRR may access the individual forecasts for each of their resources.
+The public has access to total and regional forecasts.
+All forecasts are posted to the <a href="#/slide-1-28" class="backwardlink">Market Information System</a> hourly.
+</p>
+</section>
+<section id="slide-1-37-1">
+<h4 id="1-37-1"><span class="section-number-4">1.37.1</span> Short-Term Wind Power Forecast</h4>
+<p class="backwardlink backwardlink backwardlink">
+A rolling 168 hour forecast for each <a href="#/slide-1-25-1-1" class="backwardlink">Wind Generation Resource</a>
+that is used in reliability studies.
+Calculated using the 50% <a href="#/slide-1-36" class="backwardlink">POE</a> for all <a href="#/slide-1-25-1-1" class="backwardlink">WGR</a>s, proportionally allocated (using
+the forecasting vendor's proprietary algorithm).
+The sum of the STWPF for every WGR is equal to the total ERCOT 50% POE forecast.
+</p>
+</section>
+<section id="slide-1-37-2">
+<h4 id="1-37-2"><span class="section-number-4">1.37.2</span> Wind Generation Resource Production Potential</h4>
+<p class="backwardlink backwardlink backwardlink">
+A rolling 168 hour forecast for each <a href="#/slide-1-25-1-1" class="backwardlink">Wind Generation Resource</a>
+that is used in financial settlements.
+Calculated using the 80% <a href="#/slide-1-36" class="backwardlink">POE</a> for all <a href="#/slide-1-25-1-1" class="backwardlink">WGR</a>s, proportionally allocated (using
+the forecasting vendor's proprietary algorithm).
+The sum of the WGRPP for every WGR is equal to the total ERCOT 80% POE forecast.
+</p>
+</section>
+<section id="slide-1-37-3">
+<h4 id="1-37-3"><span class="section-number-4">1.37.3</span> Short-Term Photovoltaic Power Forecast</h4>
+<p class="backwardlink backwardlink backwardlink">
+A rolling 168 hour forecast for each <a href="#/slide-1-25-1-2" class="backwardlink">PhotoVoltaic Generation Resource</a>
+that is used in reliability studies.
+Calculated using the 50% <a href="#/slide-1-36" class="backwardlink">POE</a> for all <a href="#/slide-1-25-1-2" class="backwardlink">PVGRs</a>, proportionally allocated (using
+the forecasting vendor's proprietary algorithm).
+The sum of the STPPF for every PVGR is equal to the total ERCOT 50% POE forecast.
+</p>
+</section>
+<section id="slide-1-37-4">
+<h4 id="1-37-4"><span class="section-number-4">1.37.4</span> Photovoltaic Generation Resource Production Potential</h4>
+<p class="backwardlink backwardlink backwardlink">
+A rolling 168 hour forecast for each <a href="#/slide-1-25-1-2" class="backwardlink">PhotoVoltaic Generation Resource</a>
+that is used in financial settlements.
+Calculated using the 80% <a href="#/slide-1-36" class="backwardlink">POE</a> for all <a href="#/slide-1-25-1-2" class="backwardlink">PVGRs</a>, proportionally allocated (using
+the forecasting vendor's proprietary algorithm).
+The sum of the PVGRPP for every PVGR is equal to the total ERCOT 80% POE forecast.
+</p>
+</section>
+<section id="slide-1-38">
+<h3 id="1-38"><span class="section-number-3">1.38</span> Capacity Available Tool</h3>
+<p class="backwardlink">
+Run on-demand by ERCOT operators.
+Using expected Generation schedules from <a href="#/slide-1-13" class="backwardlink">COP</a>s, and historical wind and load
+forecast uncertainties, provides the ability to do the following for a six-hour
+study window:
+</p>
+<ul>
+<li>Asssess risk of large increase in <a href="#/slide-1-31" class="backwardlink">Net Load</a></li>
+<li>Estimate adequacy of scheduled Generation and Reserves to manage risk</li>
+
+</ul>
+</section>
+<section id="slide-1-39">
+<h3 id="1-39"><span class="section-number-3">1.39</span> Point of Interconnect</h3>
+<p>
+The location at which a generation resource is connected to the grid.
+</p>
+</section>
+<section id="slide-1-40">
+<h3 id="1-40"><span class="section-number-3">1.40</span> Primary Frequency Response</h3>
+
+<div id="org0ccf3cb" class="figure">
+<p><img src="./attachments/ercot/img/primary-frequency-response.png" alt="primary-frequency-response.png" />
+</p>
+</div>
+</section>
+<section id="slide-1-41">
+<h3 id="1-41"><span class="section-number-3">1.41</span> Real-Time Dispatch</h3>
+<p>
+Occurs during a single Operating Hour within an Operating Day.
+Primary goals are:
+</p>
+<ul>
+<li>Manage reliability
+<ul>
+<li>Match generation with demand</li>
+<li>Keep transmission flows within limits</li>
+
+</ul></li>
+<li>Operate system at least cost</li>
+
+</ul>
+</section>
+<section id="slide-1-42">
+<h3 id="1-42"><span class="section-number-3">1.42</span> Real-Time Energy Imbalance</h3>
+<p>
+A negative quantity indicates that a QSE is paid by ERCOT.
+A positive quantity indicates that a QSE is charged by ERCOT.
+</p>
+
+<p>
+<code>-1 * (supplies - obligations) * RTSPP</code>
+</p>
+
+<p>
+Components of supplies and obligations are calculated at each Settlement Point separately.
+</p>
+<ul>
+<li>supplies are the sum of metered generation, DAM energy purchases, and trade energy purchases</li>
+<li>obligations are the sum of metered load, DAM energy sales, and trade energy sales</li>
+
+</ul>
+
+<p>
+Can also be written:
+</p>
+
+<p>
+<code>-[[DAM Energy Purchases + Trade Energy Purchases] - [DAM Energy Sales + Trade Energy Sales]] * RTSPP - [Metered Generation] * RTRMPR</code>
+</p>
+
+<ul>
+<li>RTSPP is <a href="#/slide-1-49-2" class="forwardlink">Real-Time Settlement Point Price</a></li>
+<li>RTRMPR is <a href="#/slide-1-50" class="forwardlink">Real-Time Resource Meter Price</a></li>
+
+</ul>
+</section>
+<section id="slide-1-43">
+<h3 id="1-43"><span class="section-number-3">1.43</span> Regulated Entity</h3>
+</section>
+<section id="slide-1-44">
+<h3 id="1-44"><span class="section-number-3">1.44</span> Reliability Unit Commitment</h3>
+<p>
+Dispatches Resources to provide more capacity if the market processes do not provide sufficient capacity.
+Might instruct generators to start or (in rare cases) to go offline.
+</p>
+
+<p>
+Inputs:
+</p>
+<ul>
+<li>Offers</li>
+<li>Current Operating Plans</li>
+<li>Forecasted Conditions</li>
+<li>Network Model</li>
+
+</ul>
+
+<p>
+Outputs:
+</p>
+<ul>
+<li>Either Resource Commitments or Nothing</li>
+
+</ul>
+</section>
+<section id="slide-1-44-1">
+<h4 id="1-44-1"><span class="section-number-4">1.44.1</span> Day-Ahead Reliability Unit Commitment</h4>
+<p>
+Runs immediately after the DAM and studies capacity needs for all hours
+of the next operating day.
+</p>
+</section>
+<section id="slide-1-44-2">
+<h4 id="1-44-2"><span class="section-number-4">1.44.2</span> Hourly Reliability Unit Commitment</h4>
+<p>
+Runs hourly during the Operating Day and studies all the remaining hours for
+the operating day, prioritizing the next few hours.
+</p>
+</section>
+<section id="slide-1-45">
+<h3 id="1-45"><span class="section-number-3">1.45</span> RUC Capacity Short Charge</h3>
+<p class="backwardlink backwardlink">
+When a Resource is committed by ERCOT through a <a href="#/slide-1-44" class="backwardlink">RUC</a>, the QSE is not paid, but
+is guaranteed future payment.
+If normal Real-Time revenues are not sufficient to cover costs for the
+Resource to start and run, then the QSE gets a Make-Whole Payment from ERCOT.
+ERCOT funds the Make-Whole Payment by collecting the RUC Capacity Short Charge
+from QSEs that have <a href="#/slide-1-8" class="backwardlink">Capacity Shortfalls</a>.
+</p>
+
+<p class="backwardlink backwardlink">
+Whenever ERCOT commits capacity in a <a href="#/slide-1-44" class="backwardlink">RUC</a> process, it calculates
+each QSE's Capacity Shortfall both at the time the <a href="#/slide-1-44" class="backwardlink">RUC</a> is executed
+and at the close of the adjustment period the hour.
+The larger of these two values is used to determine the shortfall charge.
+</p>
+</section>
+<section id="slide-1-46">
+<h3 id="1-46"><span class="section-number-3">1.46</span> Resource</h3>
+<p>
+Every Resource must be represented in the market by a Resource Entity.
+</p>
+<ol class="org-ol">
+<li><a id="1-46-0-1"></a>Generation<br />
+<ul>
+<li>One of the three "All-Inclusive Resource" types</li>
+<li>Capable of producing energy</li>
+<li>May also qualify for providing Ancillary Service capacity</li>
+<li>Must be connected to the ERCOT Transmission System</li>
+<li>Responds to dispatch instructions</li>
+<li>Must provide Reactive Power (for voltage support)</li>
+<li>Must provide Primary Frequency Response</li>
+
+</ul>
+</li>
+<li><a id="1-46-0-2"></a>Load<br />
+<ul>
+<li>One of the three "All-Inclusive Resource" types</li>
+<li>Capable of curtailing consumption of energy</li>
+<li>May also qualify for providing Ancillary Service capacity</li>
+
+</ul>
+<ol class="org-ol">
+<li><a id="1-46-0-2-1"></a>Non-Controllable<br />
+<ul>
+<li>Not capable of following dispatch instructions from SCED</li>
+<li>Permitted to provide Responsive Reserve Ancillary Services that
+operate by under-frequency relay or through verbal dispatch instruction</li>
+
+</ul>
+</li>
+<li><a id="1-46-0-2-2"></a>Controllable<br />
+<ul>
+<li>Currently there are none registered in the ERCOT region</li>
+<li>Fully capable of following SCED dispatch instructions by smoothly increasing or decreasing enery consumption</li>
+<li>Permitted to provide all three types of Ancillary Services</li>
+
+</ul>
+</li>
+</ol>
+</li>
+<li><a id="1-46-0-3"></a>Non-Modeled Generator<br />
+<p>
+For example, landfill power.
+</p>
+<ul>
+<li>One of the three "All-Inclusive Resource" types</li>
+<li>Registered with ERCOT and capable of producing energy</li>
+<li>Not allowed to provide Ancillary Services</li>
+<li>Not allowed to participate in the DAM</li>
+<li>Not allowed to receive RUC deployments</li>
+<li>Not allowed to follow SCED dispatch instructions</li>
+<li>Must be less than 10 MW unless it is registered with PUCT as a Self-Generator</li>
+<li>Settled at the Real-Time SPP for a Load Zone</li>
+
+</ul>
+</li>
+<li><a id="1-46-0-4"></a>Emergency Response Service<br />
+<p>
+Provides services during an Energy Emergency Alert to assist in maintaining or restoring ERCOT system frequency.
+QSEs may provide two types of services from their ERS resource fleet.
+</p>
+<ul>
+<li>Can be load that is capable of curtailment</li>
+<li>Can be a generator, but it cannot be registered as a Generation Resource with ERCOT and it cannot be an intermittent renewable generator</li>
+<li>Can be an aggregation of a load and a generator</li>
+
+</ul>
+<ol class="org-ol">
+<li><a id="1-46-0-4-1"></a>ERS-10<br />
+<p>
+Must be fully dispatchable in 10 minutes.
+</p>
+</li>
+<li><a id="1-46-0-4-2"></a>ERS-30<br />
+<p>
+Must be fully dispatchable in 30 minutes.
+</p>
+</li>
+<li><a id="1-46-0-4-3"></a>Weather-Sensitive<br />
+<ul>
+<li>Load that can be curtailed</li>
+<li>Allows consumers with increased consumption during peak hours to offer demand response during those hours</li>
+<li>Deployment during a single event cannot exceed three hours</li>
+
+</ul>
+</li>
+<li><a id="1-46-0-4-4"></a>Non-Weather-Sensitive<br />
+<ul>
+<li>Load or generation that is not dependent on the weather</li>
+<li>Deployment during a single event cannot exceed twelve hours</li>
+
+</ul>
+</li>
+</ol>
+</li>
+<li><a id="1-46-0-5"></a>Peaker<br />
+<p>
+Provides energy during high-demand or high-price events.
+</p>
+</li>
+<li><a id="1-46-0-6"></a>Wholesale Storage Load<br />
+<p>
+Stores energy when it is not wanted (during high supply and low demand, low prices, or high system frequency).
+Releases energy when it is wanted (during high demand, high prices, or low system frequency).
+Modeled as a load and generator pair.
+</p>
+
+<p>
+Must be metered separately from other facilities,
+because the load for a Wholesale Storage Load
+(the energy used for charging the resource) is settled differently than other load.
+The load is settled at a Resource Node, meaning its price is localized,
+unlike other loads, which are settled at geographical average prices.
+The load is also exempt from Load Ratio Share charges and payments.
+Releasing energy from the resource is treated the same as any other wholesale
+energy sale.
+</p>
+
+<p>
+Limited to the following technologies:
+</p>
+<ul>
+<li>Batteries</li>
+<li>Flywheels</li>
+<li>Compressed air energy storage (CAES)</li>
+<li>Pumped hydro-electric power</li>
+<li>Electro-chemical capacitors</li>
+<li>Thermal energy storage associated with turbine inlet chilling</li>
+
+</ul>
+
+<p>
+Currently, only battery storage is actually deployed in ERCOT.
+</p>
+</li>
+<li><a id="1-46-0-7"></a>Private Use Network<br />
+<p>
+An electric network connected to the ERCOT Transmission Grid that contains
+Load that is not directly metered by ERCOT.
+Typically occurs at a location where load is netted with internal generation.
+</p>
+
+<p>
+May include any of the following:
+</p>
+<ul>
+<li>Generation Resource</li>
+<li>Load Resource</li>
+<li>Non-Modeled Generator</li>
+<li>ERS Resource</li>
+<li>Wholesale Storage Load</li>
+
+</ul>
+</li>
+</ol>
+</section>
+<section id="slide-1-47">
+<h3 id="1-47"><span class="section-number-3">1.47</span> Security Constrained Economic Dispatch</h3>
+<p>
+The system that performs Real-Time Dispatch.
+Outputs (every 5 minutes):
+</p>
+<ul>
+<li>Resource Base Points (dispatch instructions for each available resource)</li>
+<li>Prices (Locational Marginal Prices)</li>
+
+</ul>
+<p>
+Inputs:
+</p>
+<ul>
+<li>Energy Offer Curves from Resources</li>
+<li>System conditions
+<ul>
+<li>Current Resource output</li>
+<li>For each transmission system path:
+<ul>
+<li>Flow limits</li>
+<li>Current flows</li>
+
+</ul></li>
+<li>Current Load demand</li>
+
+</ul></li>
+<li>System capabilities (from Network Operations Model)</li>
+
+</ul>
+</section>
+<section id="slide-1-48">
+<h3 id="1-48"><span class="section-number-3">1.48</span> Settlement Point</h3>
+<p>
+A location at which energy in the ERCOT Market is settled. 
+</p>
+</section>
+<section id="slide-1-48-1">
+<h4 id="1-48-1"><span class="section-number-4">1.48.1</span> Resource Node</h4>
+<p>
+Represents the point where a generator connects to the transmission system.
+There is one Resource Node for each Generation Resource in ERCOT.
+Provides a localized price for settling the output of the generator.
+</p>
+</section>
+<section id="slide-1-48-2">
+<h4 id="1-48-2"><span class="section-number-4">1.48.2</span> Load Zone</h4>
+<p>
+Represents a geographical grouping of Loads.
+Provides a regionalized price that reflects the delivery cost to that group of loads.
+All Load is assigned to one specific Load Zone for settlement purposes.
+There are 13 Load Zones in ERCOT.
+</p>
+<ol class="org-ol">
+<li><a id="1-48-2-1"></a>Competitive Load Zones<br />
+<ul>
+<li>North</li>
+<li>South</li>
+<li>West</li>
+<li>Houston</li>
+
+</ul>
+</li>
+<li><a id="1-48-2-2"></a>Non Opt-in Entity Load Zones<br />
+<ul>
+<li>Austin Energy</li>
+<li>CPS Energy</li>
+<li>LCRA</li>
+<li>Rayburn Country Cooperative</li>
+
+</ul>
+</li>
+<li><a id="1-48-2-3"></a>DC Tie Load Zones<br />
+<p>
+There are five DC ties in ERCOT, and each one has its own Load Zone.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-1-48-3">
+<h4 id="1-48-3"><span class="section-number-4">1.48.3</span> Hub</h4>
+<p>
+Essentially represent an energy pricing point that is "in-between" Generators and Load centers.
+</p>
+</section>
+<section id="slide-1-49">
+<h3 id="1-49"><span class="section-number-3">1.49</span> Settlement Point Price</h3>
+<p class="backwardlink backwardlink">
+The price for energy on the wholesale market at a <a href="#/slide-1-48" class="backwardlink">Settlement Point</a>.
+Settlement Point Prices are calculated from <a href="#/slide-1-27" class="backwardlink">Locational Marginal Prices</a>
+</p>
+</section>
+<section id="slide-1-49-1">
+<h4 id="1-49-1"><span class="section-number-4">1.49.1</span> Day-Ahead Settlement Point Price</h4>
+<p>
+Calculated hourly in the Day-Ahead Market.
+</p>
+<ol class="org-ol">
+<li><a id="1-49-1-1"></a>At Resource Node<br />
+<p>
+Equal to the resource node LMP.
+</p>
+</li>
+<li><a id="1-49-1-2"></a>At Load Zone<br />
+<p>
+Equal to load-weighted average of LMPs within the load zone
+(where load is measured at electrical buses within the load zone).
+For example, if we have a Load Zone that contains four Eletrical Buses,
+and the LMPs and fractions of load served are:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">LMP</th>
+<th scope="col" class="org-right">Load Fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">$20</td>
+<td class="org-right">10%</td>
+</tr>
+
+<tr>
+<td class="org-left">$20</td>
+<td class="org-right">20%</td>
+</tr>
+
+<tr>
+<td class="org-left">$40</td>
+<td class="org-right">30%</td>
+</tr>
+
+<tr>
+<td class="org-left">$50</td>
+<td class="org-right">40%</td>
+</tr>
+</tbody>
+</table>
+<p>
+then the SPP for the Load Zone is $38.
+</p>
+
+<p>
+Note that this means customers in the Load Zone don't pay the highest LMP,
+but also don't pay the lowest.
+</p>
+</li>
+<li><a id="1-49-1-3"></a>At a Hub<br />
+<p>
+Equal to simple average of LMPs at the 345 kV buses that make up the Hub.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-1-49-2">
+<h4 id="1-49-2"><span class="section-number-4">1.49.2</span> Real-Time Settlement Point Price</h4>
+<ul>
+<li>LMPs calculated every five minutes.</li>
+<li>Settlement Point Prices calculated in 15 minute intervals.</li>
+<li>Real-time Online Reserve Price Adder every five minutes.</li>
+
+</ul>
+<p>
+Start of SPP calculation period does not always align with start of an LMP
+calculation period.
+Start of Online Reserve Price Adder calculation period does not always
+align with start of an LMP calculation period.
+</p>
+<ol class="org-ol">
+<li><a id="1-49-2-1"></a>At Resource Node<br />
+<p>
+<code>RTSPP = RTRSVPOR + RTRDP + Time-Weighted Average (LMPs)</code>
+Time-weighted average of real-time LMPs at the resource node plus a
+time-weighted average of Online Reserve Price Adders (Online Reserve Price).
+(The period over which the time-weighted averages are calculated is the
+15 minute settlement point price period).
+</p>
+</li>
+<li><a id="1-49-2-2"></a>At Load Zone<br />
+<ol>
+<li>Load-weighted average of LMPs across all Buses in Load Zone are calculated at each five minute interval</li>
+<li>Time-weighted average of the load-weighted averages are calculated</li>
+
+</ol>
+<p>
+(The period over which the time-weighted averages are calculated is the 15 minute settlement point price period).
+Settlement Point Price is (2) plus Online Reserve Price.
+</p>
+</li>
+<li><a id="1-49-2-3"></a>At Hub<br />
+<ol>
+<li>Time-weighted average of LMPs for each bus in Hub is calculated</li>
+<li>Simple average of time-weighted averages is calculated across all buses</li>
+
+</ol>
+<p>
+(The period over which the time-weighted averages are calculated is the 15 minute settlement point price period).
+Settlement Point Price is (2) plus Online Reserve Price.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-1-50">
+<h3 id="1-50"><span class="section-number-3">1.50</span> Real-Time Resource Meter Price</h3>
+<p>
+<code>RTRMPR = RTRSVPOR + RTRDP + (Base-Point * Time) Weighted Average (LMPs)</code>
+</p>
+
+<p class="forwardlink forwardlink">
+Used for the settlement of energy production.
+Determined for every 15-minute period of time during an operating day.
+RTRSVPOR is <a href="#/slide-1-51" class="forwardlink">Real-Time Reserve Price for On-Line Reserves</a>.
+RTRDP is <a href="#/slide-1-52" class="forwardlink">Real-Time On-Line Reliability Deployment Price</a>.
+</p>
+</section>
+<section id="slide-1-51">
+<h3 id="1-51"><span class="section-number-3">1.51</span> Real-Time Reserve Price for On-Line Reserves</h3>
+<p>
+A 15-minute ERCOT-wide value.
+</p>
+</section>
+<section id="slide-1-52">
+<h3 id="1-52"><span class="section-number-3">1.52</span> Real-Time On-Line Reliability Deployment Price</h3>
+<p>
+A 15-minute ERCOT-wide value.
+</p>
+</section>
+<section id="slide-1-53">
+<h3 id="1-53"><span class="section-number-3">1.53</span> Startup Offer</h3>
+<p>
+All of the cost required to start a resource and reach its minimum operating level.
+</p>
+</section>
+<section id="slide-1-54">
+<h3 id="1-54"><span class="section-number-3">1.54</span> Subsynchronous Resonance</h3>
+<p class="forwardlink">
+Resonant currents in transmission lines of frequencies below 60 Hz.
+May induce internal voltages in generators and damage them.
+Guarded against by an Initial SSR screening by ERCOT, performed when a new
+generation resource requests interconnection.
+If the screening finds a chance that the proposed generator will become radial
+to a series capacitor under some set of transmission outages, then the interconnecting
+<a href="#/slide-2-10" class="forwardlink">Transmission Service Provider</a> must conduct a Vulnerability Assessment.
+If the assessment shows that the proposed generator is vulnerable to SSR,
+countermeasures must be deployed by the interconnecting entity, and those
+countermeasures must be deployed prior to Initial Synchronization of the resource.
+</p>
+
+<p class="forwardlink forwardlink">
+Annual SSR review is also conducted by ERCOT for all generation resources in the
+planning model.
+If a generator is found to be vulnerable to SSR, then the <a href="#/slide-2-10" class="forwardlink">TSP</a> that owns the affected
+series-compensated line must conduct a Vulnerability Assessment.
+If countermeasures are required, the <a href="#/slide-2-10" class="forwardlink">TSP</a> is responsible for them, and they
+must be deployed prior to the latter of completion of the transmission project that
+introduces the vulnerability or the initial synchronization of the affected
+generation resource.
+</p>
+</section>
+<section id="slide-1-55">
+<h3 id="1-55"><span class="section-number-3">1.55</span> System-Wide Offer Cap</h3>
+<p>
+The maximum allowable Energy Offer and Ancillary Service Offer amount.
+Currently:
+</p>
+<ul>
+<li>$9000/MWh for Energy Offers</li>
+<li>$9000/MW/h for Ancillary Services</li>
+
+</ul>
+
+<p>
+Reduced if the accumulated Peaker Net Margin exceeds a threshold value.
+</p>
+</section>
+<section id="slide-1-56">
+<h3 id="1-56"><span class="section-number-3">1.56</span> Time Periods</h3>
+
+<div id="org26d4461" class="figure">
+<p><img src="./attachments/ercot/img/time-periods.png" alt="time-periods.png" />
+</p>
+</div>
+</section>
+<section id="slide-1-56-1">
+<h4 id="1-56-1"><span class="section-number-4">1.56.1</span> Operating Hour</h4>
+<p>
+A clock hour designated by the time at which the hour ends.
+For instance, the hour from 02:00 to 03:00 is called "Hour Ending Oh-Three-Hundred".
+</p>
+</section>
+<section id="slide-1-56-2">
+<h4 id="1-56-2"><span class="section-number-4">1.56.2</span> Day-Ahead</h4>
+<p>
+The calendar day prior to a given Operating Day.
+</p>
+</section>
+<section id="slide-1-56-3">
+<h4 id="1-56-3"><span class="section-number-4">1.56.3</span> Operating Day</h4>
+<p>
+A 24-hour period divided into Operating Hours.
+</p>
+</section>
+<section id="slide-1-56-4">
+<h4 id="1-56-4"><span class="section-number-4">1.56.4</span> Day-Ahead Engine</h4>
+<p>
+The primary process within the Day-Ahead period.
+Begins at 10:00, when all bids and offers must be submitted, with results posted by 13:30.
+</p>
+</section>
+<section id="slide-1-56-5">
+<h4 id="1-56-5"><span class="section-number-4">1.56.5</span> Adjustment Period</h4>
+<p>
+For a given Operating Hour, the Adjustment Period begins at 18:00 in the Day-Ahead, and ends an hour before the start of the Operating Hour.
+</p>
+</section>
+<section id="slide-1-56-6">
+<h4 id="1-56-6"><span class="section-number-4">1.56.6</span> Hour Ahead</h4>
+<p>
+The time between the end of an Adjustment Period and the Operating Hour that corresponds to that Adjustment Period.
+</p>
+</section>
+<section id="slide-1-56-7">
+<h4 id="1-56-7"><span class="section-number-4">1.56.7</span> Settlement Interval</h4>
+<p>
+15 minutes
+</p>
+</section>
+<section id="slide-1-56-8">
+<h4 id="1-56-8"><span class="section-number-4">1.56.8</span> SCED Interval</h4>
+<p>
+5 minutes
+</p>
+</section>
+<section id="slide-1-57">
+<h3 id="1-57"><span class="section-number-3">1.57</span> Unit Reactive Limit</h3>
+<p>
+The MVAR level where a generator is operating in a lagging mode at maximum MW output
+and 0.95 power factor.
+</p>
+</section>
+<section id="slide-1-58">
+<h3 id="1-58"><span class="section-number-3">1.58</span> Value of Lost Load</h3>
+<p>
+The value of avoiding load-shedding events.
+Currently administratively set to $9000.
+</p>
+</section>
+<section id="slide-1-59">
+<h3 id="1-59"><span class="section-number-3">1.59</span> Verbal Dispatch Instruction</h3>
+<p>
+Usage includes, but is not limited to:
+</p>
+<ul>
+<li>Deployments or load shed orders during an Energy Emergency Alert</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2</span> Market Participants</h2>
+</section>
+<section id="slide-2-1">
+<h3 id="2-1"><span class="section-number-3">2.1</span> Congestion Revenue Rights Account Holder</h3>
+<p>
+Required to complete a registration and qualification process with ERCOT.
+</p>
+</section>
+<section id="slide-2-1-1">
+<h4 id="2-1-1"><span class="section-number-4">2.1.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Buys CRRs From</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">Purchases are through bidding in ERCOT auctions</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Buys CRRs From</td>
+<td class="org-left">CRR Account Holder</td>
+<td class="org-left">Purchases are through bilateral agreement</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Sells CRRs To</td>
+<td class="org-left">CRR Account Holder</td>
+<td class="org-left">Sales are through bilateral agreement</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Same as</td>
+<td class="org-left">QSE</td>
+<td class="org-left">A company can register as both a QSE and a CRR Account Holder</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Same as</td>
+<td class="org-left">LSE</td>
+<td class="org-left">A company can register as both an LSE and a CRR Account Holder</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Same as</td>
+<td class="org-left">RE</td>
+<td class="org-left">A company can register as both an RE and a CRR Account Holder</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Settles With</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">CRR Account Holder is either paid or charged by ERCOT for their CRRs based on day-ahead market prices.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-2">
+<h3 id="2-2"><span class="section-number-3">2.2</span> Consumer</h3>
+<p>
+Includes residential, commercial, and industrial consumers of electricity.
+Connected to transmission or distribution lines.
+</p>
+</section>
+<section id="slide-2-2-1">
+<h4 id="2-2-1"><span class="section-number-4">2.2.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Contracts With</td>
+<td class="org-left">Load Serving Entity</td>
+<td class="org-left">LSE provides consumer with electrical power at some retail rate.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-3">
+<h3 id="2-3"><span class="section-number-3">2.3</span> Distribution Service Provider</h3>
+<p>
+Responsible for the physical delivery of energy to a Consumer.
+A DSP is a Regulated Entity.
+Own or operate a Distribution System for the delivery of energy from the transmission grid to consumers.
+Usually DSP owns, installs, and reads electric meters.
+<b>Consumers do not pay the DSP</b>.
+Required to complete a registration and qualification process with ERCOT.
+</p>
+</section>
+<section id="slide-2-3-1">
+<h4 id="2-3-1"><span class="section-number-4">2.3.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Delivers Energy To</td>
+<td class="org-left">Consumer</td>
+<td class="org-left">Consumer calls the DSP if they are having trouble with their electricity.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-4">
+<h3 id="2-4"><span class="section-number-3">2.4</span> Electric Reliability Council of Texas</h3>
+<p>
+Organization charged with managing the flow of power for 90% of electric load in Texas.
+Independent System Operator (ISO) for ERCOT region.
+Maintains registration database of all retail customers.
+Facilitates settlement for all wholesale transactions with registered Market Participants.
+</p>
+</section>
+<section id="slide-2-4-1">
+<h4 id="2-4-1"><span class="section-number-4">2.4.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Sends Dispatch Instructions To</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">ERCOT sends instructions at least every 5 minutes.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Provides Data To</td>
+<td class="org-left">Independent Market Monitor</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-5">
+<h3 id="2-5"><span class="section-number-3">2.5</span> Independent Market Monitor</h3>
+<p>
+Identifies market rules or conduct by Market Participants that compromise the efficiency or distort the outcomes of the market.
+Issues periodic reports assessing the competetive performance and operational efficiency of the market.
+The Public Utility Commission of Texas hires the Independent Market Monitor.
+</p>
+</section>
+<section id="slide-2-5-1">
+<h4 id="2-5-1"><span class="section-number-4">2.5.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Reports To</td>
+<td class="org-left">Public Utility Commission of Texas</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-6">
+<h3 id="2-6"><span class="section-number-3">2.6</span> Load Serving Entity</h3>
+<p>
+Provides electrical service to Consumers.
+Must purchase sufficient power through the Wholesale Market to serve their Load.
+Required to complete a registration and qualification process with ERCOT.
+</p>
+</section>
+<section id="slide-2-6-1">
+<h4 id="2-6-1"><span class="section-number-4">2.6.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Settles With</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">Settles with QSE for the power purchased or traded in the market.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Designates</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">ERCOT ultimately settles with QSEs for all power supplied by the LSE they represent, so every LSE must designate a QSE.</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Obtains Power Via</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">May depend on a Qualified Scheduling Entity to obtain power needed to cover consumer load.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Collects Revenue From</td>
+<td class="org-left">Consumer</td>
+<td class="org-left">Collects revenue directly from consumers they have contracted with to provide power.</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Contracts With</td>
+<td class="org-left">Resource Entity</td>
+<td class="org-left">May also acquire power through trade contracts directly with Resource Entities.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-6-2">
+<h4 id="2-6-2"><span class="section-number-4">2.6.2</span> Types</h4>
+<div class="outline-text-4" id="text-2-6-2">
+</div>
+<ol class="org-ol">
+<li><a id="2-6-2-1"></a>Competitive Retailer<br />
+<p>
+Serves areas open to retail choice.
+</p>
+</li>
+<li><a id="2-6-2-2"></a>Municipally Owned Utility or Electric Cooperative<br />
+<p>
+Serves areas not open to retail choice.
+</p>
+</li>
+</ol>
+</section>
+<section id="slide-2-7">
+<h3 id="2-7"><span class="section-number-3">2.7</span> Public Utility Commission of Texas</h3>
+<p>
+Regulates the State's electric utilities.
+Handles Consumer complaints.
+</p>
+</section>
+<section id="slide-2-7-1">
+<h4 id="2-7-1"><span class="section-number-4">2.7.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Oversees</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-8">
+<h3 id="2-8"><span class="section-number-3">2.8</span> Qualified Scheduling Entity</h3>
+<p>
+Entity through which ERCOT interacts with the market for almost all operational purposes.
+<b>May participate in market without representing LSE or RE at all</b>,
+in which case they simply act as power marketers that buy and sell wholesale power.
+Required to complete a registration and qualification process with ERCOT.
+When a QSE is designated by an LSE, the QSE is financially responsible for Load.
+When a QSE is designated by an RE, the QSE is financially and operationally responsible for Resources.
+</p>
+</section>
+<section id="slide-2-8-1">
+<h4 id="2-8-1"><span class="section-number-4">2.8.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Represents</td>
+<td class="org-left">Load Serving Entity</td>
+<td class="org-left">QSE must be designated by LSE when LSE registers as a market participant.</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Represents</td>
+<td class="org-left">Resource Entity</td>
+<td class="org-left">QSE must be designated by RE when RE registers as a market participant.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Settles With</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">QSE enters all trades, offers, and bids into ERCOT systems and then settles with ERCOT directly for all electricity that is bought and sold in the real-time market.</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Sends Telemetry To</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">If the QSE represents an RE, then it is responsible for sending RE telemetry to ERCOT.</td>
+</tr>
+
+<tr>
+<td class="org-left">Sometimes</td>
+<td class="org-left">Instructs</td>
+<td class="org-left">Resource Entity</td>
+<td class="org-left">If the QSE represents an RE, then it is responsible for ensuring the RE receives and complies with ERCOT dispatch instructions.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-9">
+<h3 id="2-9"><span class="section-number-3">2.9</span> Resource Entity</h3>
+<p>
+Owns or controls one or more Resources.
+Ensures telemetry is installed and maintained at each Resource.
+Required to complete a registration and qualification process with ERCOT.
+</p>
+</section>
+<section id="slide-2-9-1">
+<h4 id="2-9-1"><span class="section-number-4">2.9.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Designates</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Sends Telemetry To</td>
+<td class="org-left">Qualified Scheduling Entity</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Communicates Outages To</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">RE enters planned and unplanned outages in ERCOT Outage Coordination System.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Provides Technical &amp; Operational Capabilities To</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">ERCOT uses specs REs in its network model.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-10">
+<h3 id="2-10"><span class="section-number-3">2.10</span> Transmission Service Provider</h3>
+<p>
+Owns or operates transmission facilities used for transmission of electricity.
+A TSP is a Regulated Entity.
+Provides transmission service in the ERCOT system.
+Connects Generators either directly to large Consumers or Distribution Systems for delivery to Consumers.
+Required to complete a registration and qualification process with ERCOT.
+</p>
+</section>
+<section id="slide-2-10-1">
+<h4 id="2-10-1"><span class="section-number-4">2.10.1</span> Relationships</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Strength</th>
+<th scope="col" class="org-left">Relationship</th>
+<th scope="col" class="org-left">Market Participant</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Provides Telemetry To</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">ERCOT uses telemetry to manage the electrical system.</td>
+</tr>
+
+<tr>
+<td class="org-left">Always</td>
+<td class="org-left">Provides Modeling Data To</td>
+<td class="org-left">ERCOT</td>
+<td class="org-left">Data includes equipment, transmission lines, and connections.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-2-11">
+<h3 id="2-11"><span class="section-number-3">2.11</span> Independent Market Information System Registered Entity</h3>
+<p class="backwardlink">
+A Market Participant that exists for the sole purpose of accessing the <a href="#/slide-1-28" class="backwardlink">MIS</a> Secure Area.
+<a href="http://www.ercot.com/services/rq/imre">http://www.ercot.com/services/rq/imre</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3</span> Ideas/Scratchpad</h2>
+<p>
+What would happen if a new generator came online along a transmission line
+operating at 70% capacity that carried power from a coal plant? If the new
+generation was cheaper than coal and powerful enough to saturate the
+transmission line, and then some, would it be PHYSICALLY bumping the coal
+plant offline (in addition to economically bumping it offline)? If so, would
+a cheap (or even profitable) way to decomission a coal plant be to
+strategically position a different generator along its transmission line?
+Would it be possible to even just subsidise generators along that existing
+transmission line so that they are always bumped up in the merit order ahead
+of coal?
+</p>
+
+<p>
+ERCOT adds transmission losses to the LOAD, meaning that consumers are the
+ones that pay for an inefficient transmission system, rather than generators.
+</p>
+
+<p>
+As of 2017, there were about 78 GW of capacity in ERCOT, and the peak demand
+record was 71 GW on August 11, 2016.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-4">
+<h2 id="4"><span class="section-number-2">4</span> Modeling</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</section>
+<section id="slide-4-1">
+<h3 id="4-1"><span class="section-number-3">4.1</span> Public Data</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+</section>
+<section id="slide-4-1-1">
+<h4 id="4-1-1"><span class="section-number-4">4.1.1</span> Transmission Constraints</h4>
+<div class="outline-text-4" id="text-4-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="4-1-1-1"></a><a href="https://mis.ercot.com/public/data-products/grid/generation?id=NP5-755-CD">Hourly RUC Active and Binding Transmission Constraints</a><br />
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">DeliveryDate</th>
+<th scope="col" class="org-right">HourEnding</th>
+<th scope="col" class="org-left">RUCTimeStamp</th>
+<th scope="col" class="org-right">ConstraintID</th>
+<th scope="col" class="org-left">ConstraintName</th>
+<th scope="col" class="org-left">ContingencyName</th>
+<th scope="col" class="org-right">Limit</th>
+<th scope="col" class="org-right">Value</th>
+<th scope="col" class="org-right">ViolationAmount</th>
+<th scope="col" class="org-left">FromStation</th>
+<th scope="col" class="org-left">ToStation</th>
+<th scope="col" class="org-right">FromStationkV</th>
+<th scope="col" class="org-right">ToStationkV</th>
+<th scope="col" class="org-left">DSTFlag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">04/17/2021</td>
+<td class="org-right">11:00</td>
+<td class="org-left">04/17/2021 08:03:01</td>
+<td class="org-right">1</td>
+<td class="org-left">LOYOLA<sub>69</sub><sub>1</sub></td>
+<td class="org-left">SKLELOY8</td>
+<td class="org-right">40</td>
+<td class="org-right">40</td>
+<td class="org-right">0</td>
+<td class="org-left">LOYOLA</td>
+<td class="org-left">LOYOLA</td>
+<td class="org-right">138</td>
+<td class="org-right">69</td>
+<td class="org-left">N</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><a id="4-1-1-2"></a><a href="https://mis.ercot.com/public/data-products/grid/transmission?id=NP6-86-CD">SCED Shadow Prices and Binding Transmission Constraints</a><br />
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">SCEDTimeStamp</th>
+<th scope="col" class="org-left">RepeatedHourFlag</th>
+<th scope="col" class="org-right">ConstraintID</th>
+<th scope="col" class="org-left">ConstraintName</th>
+<th scope="col" class="org-left">ContingencyName</th>
+<th scope="col" class="org-right">ShadowPrice</th>
+<th scope="col" class="org-right">MaxShadowPrice</th>
+<th scope="col" class="org-right">Limit</th>
+<th scope="col" class="org-right">Value</th>
+<th scope="col" class="org-right">ViolatedMW</th>
+<th scope="col" class="org-left">FromStation</th>
+<th scope="col" class="org-left">ToStation</th>
+<th scope="col" class="org-right">FromStationkV</th>
+<th scope="col" class="org-right">ToStationkV</th>
+<th scope="col" class="org-left">CCTStatus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">04/03/2021 07:20:16</td>
+<td class="org-left">N</td>
+<td class="org-right">1</td>
+<td class="org-left">LGD<sub>SANTIA1</sub><sub>1</sub></td>
+<td class="org-left">BASE CASE</td>
+<td class="org-right">0</td>
+<td class="org-right">9251</td>
+<td class="org-right">153.7</td>
+<td class="org-right">56.1</td>
+<td class="org-right">-97.6</td>
+<td class="org-left">LGD</td>
+<td class="org-left">SANTIAGO</td>
+<td class="org-right">138</td>
+<td class="org-right">138</td>
+<td class="org-left">NONCOMP</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</section>
+<section id="slide-4-1-2">
+<h4 id="4-1-2"><span class="section-number-4">4.1.2</span> Electrical Buses</h4>
+<p>
+<a href="https://mis.ercot.com/public/data-products/markets/day-ahead-market?id=NP4-160-SG">https://mis.ercot.com/public/data-products/markets/day-ahead-market?id=NP4-160-SG</a>
+</p>
+</section>
+<section id="slide-4-2">
+<h3 id="4-2"><span class="section-number-3">4.2</span> Private Data</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+</section>
+<section id="slide-4-2-1">
+<h4 id="4-2-1"><span class="section-number-4">4.2.1</span> CIM Network Model</h4>
+<ul>
+<li><a href="http://mydocs.epri.com/docs/publicmeetingmaterials/1009/4znave2tn5e/e234888_2_5_cim_model_ercot.pdf">http://mydocs.epri.com/docs/publicmeetingmaterials/1009/4znave2tn5e/e234888_2_5_cim_model_ercot.pdf</a></li>
+<li><a href="https://mis.ercot.com/public/data-products/grid/modeling?id=NP3-462-SG">https://mis.ercot.com/public/data-products/grid/modeling?id=NP3-462-SG</a></li>
+
+</ul>
+
+</section>
+<section id="slide-4-3">
+<h3 id="4-3"><span class="section-number-3">4.3</span> Open Source Code</h3>
+<ul>
+<li><a href="https://github.com/ITDProject/ERCOTTestSystem">https://github.com/ITDProject/ERCOTTestSystem</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-5">
+<h2 id="5"><span class="section-number-2">5</span> Nodal Protocols</h2>
+<ul>
+<li>Complete: <a href="http://www.ercot.com/content/wcm/libraries/227367/March_15__2021_Nodal_Protocols.pdf">http://www.ercot.com/content/wcm/libraries/227367/March_15__2021_Nodal_Protocols.pdf</a></li>
+<li>Charge-Type Matrix: <a href="http://mis.ercot.com/misapp/GetReports.do?reportTypeId=12363&amp;reportTitle=Settlements%20Charge%20Matrix&amp;showHTMLView=&amp;mimicKey">http://mis.ercot.com/misapp/GetReports.do?reportTypeId=12363&amp;reportTitle=Settlements%20Charge%20Matrix&amp;showHTMLView=&amp;mimicKey</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/dist/reveal.js"></script>
+<script src="./reveal.js/plugin/markdown/markdown.js"></script>
+<script src="./reveal.js/plugin/notes/notes.js"></script>
+<script src="./reveal.js/plugin/search/search.js"></script>
+<script src="./reveal.js/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1091 @@
+* Concepts
+  :PROPERTIES:
+  :COLUMNS:  %25ITEM %ACRONYM
+  :END:
+  For ERCOT-provided definitions and acronyms, see [[http://www.ercot.com/content/wcm/current_guides/53528/02-040221_Nodal.docx][Section 2 of the ERCOT Nodal Protocols]].
+** Ancillary Services
+   :PROPERTIES:
+   :ACRONYM:  AS
+   :END:
+   Extra services ERCOT procures to help manage reliability of the transmission system.
+   Acquired by ERCOT from QSEs primarily in the DAM, and by supplemental markets closer to real-time if needed.
+*** Regulation Service
+    Used to manage the risk of sudden changes in [[*Net Load][Net Load]], that is, to both changes in demand
+    and changes in the output of [[*Intermittent Renewable Resource][IRRs]].
+
+    Matches generation with demand by responding to frequency deviations at generation resources.
+    Issues instructions at a resolution of seconds to increase or decrease generation in-between Base Points.
+    Must be capable of ramping through reserved capacity in 5 minutes or less.
+    
+    | Regulation Service Products     | General Response Requirements                                             |
+    |---------------------------------+---------------------------------------------------------------------------|
+    | Regulation Up                   | within 5 sec                                                              |
+    | Regulation Down                 |                                                                           |
+    |---------------------------------+---------------------------------------------------------------------------|
+    | Fast Responding Regulation Up   | within 60 cycles of ERCOT signal - or - By frequency trigger (+/- 0.09Hz) |
+    | Fast Responding Regulation Down |                                                                           |
+
+    Historical Net Load is used to determine how much Regulation will be required in the future.
+    ERCOT determines each hourly need for Regulation based on two years of
+    Net Load history for the month during which the hour occurs as follows:
+    1. Take the 95th percentile of Regulation deployed during the same month over the
+       previous two years.
+    2. Take the 95th percentile of Net Load changes during the same month over the
+       previous two years.
+    3. Take the maximum of 1 and 2, this is the base regulation requirement.
+    4. Add incremental MWs for additional Wind Generation added during the previous year.
+       Details can be found in "Methodology for Determining Minimum Ancillary Service Requirements".
+*** Responsive Reserve Service
+    Responds within minutes to things like loss of large generator or a large load-ramp.
+    Must be fully deliverable within 10 minutes.
+    Can provide additional capacity during an Energy Emergency Alert.
+*** Non-Spinning Reserve Service
+    Used to manage the risk of under-forecasting gradual changes in [[*Net Load][Net Load]].
+    Must be fully deliverable (synchronizing and ramping to specified output level) within 30 minutes.
+    May be deployed to help with system-wide load that is larger than expected, or with local transmission issues.
+    Must be capable of running at a specified output level for at least one hour.
+** Base Point
+   The level at which a generator (Resource?) has been instructed to produce
+   power by ERCOT.
+   
+   ERCOT issues Base Points to [[*Intermittent Renewable Resource][IRRs]], but most of the time the Base Point
+   is merely permissive.
+** Base Point Deviation Charge
+   Assessed when a Resource's output is not close enough to its [[*Base Point][Base Point]].
+*** For Intermittent Renewable Resources
+    For an [[*Intermittent Renewable Resource][IRR]] to be charged for a Base Point deviation within a given Settlement Interval,
+    the IRR must be curtailed for all [[*Security Constrained Economic Dispatch][SCED]] intervals within the Settlement Interval and
+    the IRR must be over-generating (not under-generating) on average compared to their
+    average Base Point during the Settlement Interval.
+   
+    [[*Intermittent Renewable Resource][IRRs]] are allowed a wider tolerance from their Base Point than other Resources.
+   
+    Note that [[*IRR Group][IRR Groups]] are assessed as an aggregate when calculating the Base Point Deviation Charge.
+
+    | Curtailment Flag | IRR Output within 10% acceptable range | IRR output exceeds 10% acceptable range |
+    |------------------+----------------------------------------+-----------------------------------------|
+    | Not set          | No Charge                              | No Charge                               |
+    | Set              | No Charge                              | Charge                                  |
+  
+    The charge is equal to the amount of over-generation times the maximum of 20 dollars or the [[*Real-Time Settlement Point Price][RTSPP]]: 
+    ~Charge = Max(20, RTSPP) * [Average Output - (Base Point + 10% Tolerance)]~
+** Bilateral Trade
+   QSE to QSE transactions.
+   Documented for ERCOT settlement purposes.
+   Transfer the financial responsibility of providing energy from the buyer to the seller.
+   Buyer ultimately receives credit for the energy during the ERCOT settlement process.
+   
+   QSEs can make different types of bilateral trades: Energy, Capacity, Ancillary Service.
+   
+   | Information Needed                       | Energy Trade                  | Capacity Trade           |
+   |------------------------------------------+-------------------------------+--------------------------|
+   | Buying QSE                               | Required                      | Required                 |
+   | Selling QSE                              | Required                      | Required                 |
+   | Settlement Point                         | Required                      |                          |
+   | MW quantity for each Settlement Interval | 15 minute                     | Hourly                   |
+   | Deadline for Submission                  | 1430, Day After Operating Day | End of Adjustment Period |
+*** Energy Trade
+    + Affects real-time settlements by adjusting the energy supply or obligation for a given QSE.
+    + Affects settlements for subsequent RUCs
+*** Capacity Trade
+    + Affects settlements for subsequent RUCs
+** Capacity
+   Total MW capability of resources that are available to ERCOT during an operating hour.
+   System Capacity = Ancillary Services Capacity + Available for Energy Dispatch
+
+   There must be enough capacity to serve the Forecasted Load, but the capacity must
+   also be distributed sufficiently to manage congestion of the transmission system.
+
+   If market processes do not provide sufficient capacity, then the Reliability Unit Commitment
+   process dispatches Resources to provide more capacity.
+
+   QSEs are compelled to make capacity available for Energy Dispatch by the expected Settlement Point Prices for the Real-Time Market.
+** Capacity Obligation
+   A QSE may be required to provide capacity via one of the following transactions:
+   + Adjusted Metered Load
+   + Capacity Trades where QSE is seller
+   + Energy Trades where QSE is seller
+   + Cleared [[*Day-Ahead Market][DAM]] Energy Offers
+** Capacity Supply
+   A QSE may arrange capacity supplies via one of the following transactions:
+   + Commitment of the QSE's Resources
+   + Capacity Trades in which the QSE is the buyer
+   + Energy Trades in which the QSE is the buyer
+   + Cleared [[*Day-Ahead Market][DAM]] Energy Bids
+** Capacity Shortfall
+   A QSE's capacity shortfall is the difference between the capacity
+   required to meet their [[*Capacity Obligation][obligations]] and the capacity they have
+   [[*Capacity Supply][arranged]].
+   A shortfall only exists if their obligations exceed their arranged
+   capacity.
+** Congestion
+   When a path (transmission line, etc.) is loaded to its limit.
+   Keeps us from dispatching additional load via that path.
+   This leads to price separation between electrical buses.
+   Price separation in Locational Marginal Price is always a sign of transmission congestion.
+** Congestion Rent
+   Difference in Locational Marginal Price between resource and load buses, multiplied by total load.
+   Funds the Congestion Revenue Rights in the Day-Ahead Market.
+** Congestion Revenue Rights
+   :PROPERTIES:
+   :ACRONYM:  CRR
+   :END:
+   Monthly financial instruments that can be purchased by CRR Account Holders
+   that may pay or charge the CRR Account Holder if congestion exists on the
+   ERCOT system.
+   May be used:
+   - To hedge actual power delivery costs
+   - As investments
+   Purchased at auction price and cashed out (settled) at DAM price spread
+   between two Settlement Points.
+   Auctioned the following time-of-use blocks in one month strips:
+   - Off-Peak (0100-0600 and 2200-0000) 
+   - Peak Weekday (0700-2200)
+   - Peak Weekend (0700-2200)
+*** Point-to-Point Obligation
+    May provide the holder with a payment or charge in the DAM.
+*** Point-to-Point Option
+    May provide the holder with a payment in DAM.
+** Cost-Optimization Processes
+   Reliability-focused processes where we must obtain some reliability goal at the least cost.
+   In contrast to Market processes, these processes have no Bids from buyers, only Offers from sellers.
+   Buyers are simply "price-takers".
+   Cost is optimized by clearing the lowest Offers first until the required goal (such as number of MW needed) is met.
+   Real-Time Dispatch is an example of this type of process.
+** Current Operating Plan
+   :PROPERTIES:
+   :ACRONYM:  COP
+   :END:
+   Submitted by a QSE for each of their generating Resources.
+   Shows, for each hour of the next 7 days:
+   - Resource Status (on/off/out-of-service)
+   - Resource Limits
+   - Ancillary Service Commitments
+
+   May be updated until the end of the [[*Adjustment Period][Adjustment Period]].
+   Must be updated within 60 minutes of any event that impacts status or capabilities.
+*** Resource Status
+    | Status | Definition                                            |
+    |--------+-------------------------------------------------------|
+    | ON     | QSE has committed to run the Resource                 |
+    | OFF    | Resource is offline, but available for RUC commitment |
+    | OUT    | Resource is not available                             |
+** Day-Ahead Market Point-to-Point Obligation
+   :PROPERTIES:
+   :ACRONYM:  PTP Obligation
+   :END:
+   Hourly financial instrument used to hedge real-time congestion cost.
+   Defined between two Settlement Points, Source and Sink.
+   In the DAM, a QSE pays ~(Sink - Source) * Award~, where
+   - ~Sink~ is the DAM SPP at the Sink
+   - ~Source~ is the DAM SPP at the Source
+   - ~Award~ is the number of MWh awarded to the QSE in the DAM along the link
+   Then, in the RTM, a QSE is paid ~(Sink - Source) * Actual~, where
+   - ~Sink~ is the RT SPP at the Sink
+   - ~Source~ is the RT SPP at the Source
+   - ~Award~ is the number of MWh awarded to the QSE in the DAM along the link
+** Distribution System
+   All lines and equipment below 60kV.
+   ERCOT does not model or manage any Distribution System.
+** Electrical Bus
+   The most granular point modeled in the ERCOT transmission system.
+   ERCOT calculates a [[*Locational Marginal Price][Locational Marginal Price]] for every Electrical Bus in the system.
+   A bus typically is, but may not be, part of a particular [[*Settlement Point][Settlement Point]].
+   Generally speaking, an Electrical Bus is an electrical substation.
+*** Load Substation
+    Where transmission voltage is stepped down to distribute power to a neighborhood or business district.
+*** Generator Substation
+    Where a Generation Resource connects to the grid.
+*** Substation
+    Where two different utilities tie their systems together.
+** Energy Emergency Alert
+   :PROPERTIES:
+   :ACRONYM:  EEA
+   :END:
+   | Level   | Action                                         |
+   |---------+------------------------------------------------|
+   | Level 1 | [[*ERS-30][ERS-30]] may be deployed                         |
+   | Level 2 | [[*ERS-10][ERS-10]] and undeployed [[*ERS-30][ERS-30]] shall be deployed |
+   | Level 3 | Firm load shed ordered                         |
+** Energy Offer Curve
+   Incremental cost of operating a generation resource as a function of MW of output.
+   This function is typically monotonically increasing.
+
+   May be submitted or updated by QSEs up until the end of the [[*Adjustment Period][Adjustment Period]].
+   
+   Represented in the ERCOT system with:
+   - Up to 10 price/quantity pairs
+   - Minimum allowable quantity of 1 MW
+   - Allowable price range of -$250 to $9000
+   [[./attachments/ercot/img/energy-offer-curve.png]]
+** Resource Limits
+   [[./attachments/ercot/limits.png]]
+**** High Sustained Limit
+     :PROPERTIES:
+     :ACRONYM:  HSL
+     :END:
+     For an IRR, it is the current net output capability,
+     based on current conditions such as wind/irradiance and how many
+     turbines/inverters are online.
+**** Low Sustained Limit
+     :PROPERTIES:
+     :ACRONYM:  LSL
+     :END:
+**** High Dispatch Limit
+     :PROPERTIES:
+     :ACRONYM:  HDL
+     :END:
+**** Low Dispatch Limit
+     :PROPERTIES:
+     :ACRONYM:  LDL
+     :END:
+** ERCOT-Polled Settlement Meter
+   :PROPERTIES:
+   :ACRONYM:  EPS
+   :END:
+** Financial
+*** Forward Market
+    A market that sets the price of a financial instrument or asset for future delivery.
+    A platform on which hedging takes place.
+*** Hedging
+    Transacting at a known price now to protect from having to transact at an unknown price later.
+*** Bid
+    Economic representative of "demand".
+    A proposal to buy a product at a specific location for a particular price.
+    The buyer is always happy to pay *less*.
+*** Offer
+    Economic representative of "supply".
+    A proposal to sell a product at a specific location for a particular price.
+    The seller is always happy to be paid *more*.
+*** Sign Conventions
+    - Charge for awarded Energy Bid is positive, money flows into ERCOT
+    - Payment for awarded Energy Offer is negative, money flows out of ERCOT 
+** Full Interconnection Study
+   :PROPERTIES:
+   :ACRONYM:  FIS
+   :END:
+   Conducted by a Transmission Service Provider when a company requests interconnection
+   of a new [[*Intermittent Renewable Resource][Intermittent Renewable Resource]].
+   The report highlights the nature and severity of any potential constraints that
+   the proposed IRR might face if the company chooses to interconnect at a specific
+   proposed location.
+** Hub
+   A group of 345 kV buses within a geographic region.
+   There are seven hubs in ERCOT:
+   + North
+   + South
+   + West
+   + Houston
+   + Panhandle
+   + ERCOT Hub Average
+   + ERCOT Bus Average
+** Inter-Control Center Communications Protocol
+   :PROPERTIES:
+   :ACRONYM:  ICCP
+   :END:
+   [[http://www.ercot.com/content/wcm/lists/89522/ERCOT_Nodal_ICCP_Communications_Handbook_v3-10.docx][Handbook]]
+** Intermittent Renewable Resource
+   :PROPERTIES:
+   :ACRONYM:  IRR
+   :END:
+   A Generation Resource that can only produce energy from variable, uncontrollable
+   resources, such as wind, solar, or run-of-the-river hydroelectricity.
+
+   IRRs always run at max capability (unless curtailed) with a permissive Base Point.
+   This is in contrast to non-IRRs, that seek to match their Base Points, which typically
+   are not at those resources' max capability.
+
+   IRRs generally do not participate in the Day-Ahead Market.
+
+   The ramp rate of an IRR is limited to 20% of the resource's Nameplate Rating per minute.
+   This means that when curtailed by ERCOT, an IRR must go from full output to zero output in no less than 5 minutes.
+   When released from curtailment, the IRR must go from zero output to full output in no less than 5 minutes.
+
+   ERCOT may request shutdown of IRRs when their output is below 10% of their Nameplate Rating.
+*** Resource Types
+    There are currently two types of IRRs in ERCOT.
+**** Wind-Powered Generation Resource
+     :PROPERTIES:
+     :ACRONYM:  WGR
+     :END:
+     An aggregation of wind turbines on the same Electrical Bus.
+     Generally, each wind turbine must be of the same model and size, although
+     there are exceptions to this rule (Protocol 3.10.7.2 (11)).
+     The resource must not reduce ERCOT's ability to model the grid.
+
+     ERCOT updates the [[*Current Operating Plan][COP]] [[*High Sustained Limit][HSL]] to the [[*Short-Term Wind Power Forecast][STWPF]] for the first 168 hours of the [[*Current Operating Plan][COP]]
+     for a WGR, but the resource's QSE may override to a lesser value.
+**** PhotoVoltaic Generation Resource
+     :PROPERTIES:
+     :ACRONYM:  PVGR
+     :END:
+     ERCOT updates the [[*Current Operating Plan][COP]] [[*High Sustained Limit][HSL]] to the [[*Short-Term Photovoltaic Power Forecast][STPPF]] for the first 168 hours of the [[*Current Operating Plan][COP]]
+     for a PVGR, but the resource's QSE may override to a lesser value.
+*** Telemetry
+    More telemetry is required for IRRs compared to traditional generation resources.
+**** Meteorological Tower Data
+     Measured at the IRR site and reported by the QSE through ICCP Telemetry every 10 seconds.
+     Includes:
+     + Wind Speed
+     + Wind Direction
+     + Temperature
+     + Barometric Pressure
+     + Back Panel Temperature (for PVGRs)
+     + Plane of Array Irradiance (for PVGRs)
+**** Resource Telemetry
+     Operational data that indicates the current condition and capabilities of the IRR.
+     Reported by the QSE every 2 to 10 seconds, depending on type of datapoint.
+     + Resource status
+     + Power output (MW & MVAR)
+     + High Sustained Limit
+     + Number of turbines (inverters for PVGRs) online, offline, and unknown
+**** Outage
+     Resource availability data reported by the QSE through the Outage Scheduler.
+     There are two types:
+     
+     + Outage - A Resource that has been removed from service
+     + Forced Derate - A portion of a Resource that has been removed from service
+
+     A Forced Derate occurs when a resource loses 10 MW or 5% of its Seasonal Net Max Sustainable Rating due to equipment malfunction,
+     and must only be reported if it is expected to last more than 48 hours.
+*** Pricing
+    Because an IRR is always running at its maximum possible output,
+    setting a low price for its power ensures that it is "dispatched" by SCED.
+    [[./attachments/ercot/img/irr-pricing-1.png]]
+
+    When there are transmission constraints, the IRR is curtailed.
+    While curtailed, the HSL should still represent current net output capability
+    of the IRR.
+    [[./attachments/ercot/img/irr-pricing-2.png]]
+** IRR Group
+   A group of two or more [[*Intermittent Renewable Resource][IRRs]] whose performance in responding to Dispatch
+   Instructions will be assessed as an aggregate.
+   All IRRs in the group must have the same Resource Node, and there are no
+   Split Generation Resources allowed in an IRR Group.
+   Each IRR in the group is dispatched and metered separately.
+** Locational Marginal Price
+   :PROPERTIES:
+   :ACRONYM:  LMP
+   :END:
+   The cost to serve one additional unit of load at an [[*Electrical Bus][Electrical Bus]].
+   LMPs are the building blocks for [[*Settlement Point Price][Settlement Point Prices]].
+   ERCOT does not adjust LMP to account for transmission losses, rather it considers losses part of load.
+   Note that the LMP is not the "type" of quantity used to settle energy;
+   [[*Settlement Point Price][Settlement Point Prices]], which are calculated from LMPs (and may even have the same *value* as an LMP),
+   are the "type" of quantity used for financial settlement.
+** Market Information System
+   :PROPERTIES:
+   :ACRONYM:  MIS
+   :END:
+   Provides data to the market participants and the general public, including:
+   - System Conditions
+   - Forecasts
+   - Market Awards
+   - Prices
+   - ERCOT Applications
+   - Settlement Data
+** Markets
+   Processes that have both Bids and Offers as inputs.
+   Transactions only occur so long as there are compatible Bids and Offers present.
+   Market processes optimize for value by clearing the highest bids and lowest offers until sellers are no longer willing to accept what buyers are willing to pay.
+*** Day-Ahead Market
+    :PROPERTIES:
+    :ACRONYM:  DAM
+    :END:
+    A centralized forward market in which QSEs bid and offer on energy and offer Ancillary Services.
+    Facilitated and cleared by ERCOT.
+    Clearing co-optimizes for energy and Ancillary Services across an entire day subject to the constraints imposed by the Network Model.
+    Inputs:
+    - Bids
+    - Offers
+    - Network Model
+    Outputs:
+    - Hourly Awards
+    - Hourly Prices
+**** Offer Types
+***** Supply Offer
+      Comprised of a Startup Offer, a Minimum Energy Offer, and an Energy Offer Curve.
+***** Day-Ahead Market Energy-Only Offer
+      An offer to sell energy that is not backed up by physical generation capacity.
+      May be offered at any Settlement Point.
+      When awarded, a QSE is paid the Day-Ahead settlement point price,
+      then must buy the awarded amount of energy the following day in the Real-Time
+      market at the Real-Time Settlement Point Price.
+      This provides an opportunity to make money when Real-Time prices are lower than Day-Ahead prices.
+      Tends to drive Day-Ahead and Real-Time prices closer together.
+***** Ancillary Service Offer
+      Offered at a specific resource, primarily in the DAM.
+      May be:
+      - Regulation Up
+      - Regulation Down
+      - Responsive Reserve
+      - Non-Spinning Reserve
+      A single resource may be used to make multiple AS offers, as well as AS and Supply offers.
+**** Bid Types
+***** Energy Bid
+      A proposal to buy energy in the Day-Ahead Market.
+      May be bid at any Settlement Point.
+      When awarded, a QSE pays the Day-Ahead Settlement Point Price and is given a credit in the Real-Time market for the energy awarded.
+      Then, in Real-Time, if the QSE:
+      - Has load         , the credit offsets the energy they must buy to serve the load
+      - Doesn't have load, they are paid for the credited amount of energy at the Real-Time Settlement Point Price
+      Provides an opportunity for a QSE with no load to make money when Day-Ahead prices are lower than Real-Time prices.
+***** PTP Obligation Bid 
+      Defined by:
+      - Two Settlement Points: a Source and a Sink.
+      - A MW quantity
+      - The ~Sink - Source~ SPP difference willing to pay
+      Being awarded a bid results in either a payment or a charge in the Real-Time Market.
+      A QSE specifies the MW quantity
+*** Congestion Revenue Rights Auction
+    Forward financial market for trading Congestion Revenue Rights.
+    Clearing optimizes for an entire month subject to the constraints imposed by the Network Model.
+    Schedule of CRR auctions is developed years in advance.
+    Inputs:
+    - Bids
+    - Offers
+    - Network Model
+    Outputs:
+    - Awards
+    - Prices
+** Minimum Energy Offer
+   Hourly cost to run the resource at its minimum operating level.
+** Net Load
+   The combination of variable [[*Intermittent Renewable Resource][IRR]] output with variable system load.
+** Network Operations Model
+   Computer model that represents physical ERCOT transmission grid.
+   Used for reliability studies and all market processes.
+** Non Opt-in Entity
+   :PROPERTIES:
+   :ACRONYM:  NOE
+   :END:
+   Municipal utilities or electric cooperatives who have chosen not to offer retail competition in their service territories.
+** Operating Reserve Demand Curve
+   :PROPERTIES:
+   :ACRONYM:  ORDC
+   :END:
+   Enhances generation price signals in the Real-Time Market.
+   Uses a Real-Time Reserve Price Adder to reflect the value of real-time reserves.
+   Reflects the value of avoiding load-shedding events (Value of Lost Load).
+   Each point on the curve is based on the probability that ERCOT would have a load-shedding event (based on historical data).
+
+   Varies by season and by time of day, but in general, curve is shaped like:
+   [[./attachments/ercot/img/ordc.png]]
+** Peaker Net Margin
+   :PROPERTIES:
+   :ACRONYM:  PNM
+   :END:
+   A representation of the net revenue a Peaker Resource could have captured
+   while generating in the Real-Time Market during high-demand and high-price events.
+
+   Calculated every 15 minutes by approximating the total revenue available to all online
+   resources during the Real-Time Market and subtracting the approximate operating cost for a
+   Peaker Resource.
+
+   A 15-minute value of when the Real-Time Energy Price is greater than operating costs of a Peaker Resource.
+
+   PNM = Max[(RTEP - POC) * 1/4 h, 0]
+
+   | RTEP | Real-Time Energy Price | HB_HUBAVG              |
+   | POC  | Peaker Operating Cost  | 10 * Fuel Index Price  |
+
+   HB_HUBAVG is the Ercot Hub Average Hub Price.
+   The Fuel Index Price is the daily Houston Ship Channel Gas Price Index for the previous business day.
+*** Threshold
+    Three times the cost of entry for new generation (currently $315,000 per MW).
+
+    When the sum of the Peaker Net Margin (across every 15-minute interval throughout the year) is greater
+    than or equal to the threshold, the SWCAP is reduced for the remainder of the year to
+    Max[$2000, (50 * Fuel Index Price)].
+** Probability of Exceedance
+   :PROPERTIES:
+   :ACRONYM:  POE
+   :END:
+   An hourly time series of MW values that an IRR's generation output is
+   forecasted to exceed with a certain probability.
+   For example, the 50% POE for a given IRR might be 10 MW at 11 AM, 14 MW at 12 PM, etc.
+   Calculated from an ensemble of hourly forecast models for IRR resource types.
+** Intermittent Renewable Resource Hourly Forecasting
+   Only the QSE representing an IRR may access the individual forecasts for each of their resources.
+   The public has access to total and regional forecasts.
+   All forecasts are posted to the [[*Market Information System][Market Information System]] hourly.
+*** Short-Term Wind Power Forecast
+    :PROPERTIES:
+    :ACRONYM:  STWPF
+    :END:
+    A rolling 168 hour forecast for each [[*Wind-Powered Generation Resource][Wind Generation Resource]]
+    that is used in reliability studies.
+    Calculated using the 50% [[*Probability of Exceedance][POE]] for all [[*Wind-Powered Generation Resource][WGR]]s, proportionally allocated (using
+    the forecasting vendor's proprietary algorithm).
+    The sum of the STWPF for every WGR is equal to the total ERCOT 50% POE forecast.
+*** Wind Generation Resource Production Potential
+    :PROPERTIES:
+    :ACRONYM:  WGRPP
+    :END:
+    A rolling 168 hour forecast for each [[*Wind-Powered Generation Resource][Wind Generation Resource]]
+    that is used in financial settlements.
+    Calculated using the 80% [[*Probability of Exceedance][POE]] for all [[*Wind-Powered Generation Resource][WGR]]s, proportionally allocated (using
+    the forecasting vendor's proprietary algorithm).
+    The sum of the WGRPP for every WGR is equal to the total ERCOT 80% POE forecast.
+*** Short-Term Photovoltaic Power Forecast
+    :PROPERTIES:
+    :ACRONYM:  STPPF
+    :END:
+    A rolling 168 hour forecast for each [[*PhotoVoltaic Generation Resource][PhotoVoltaic Generation Resource]]
+    that is used in reliability studies.
+    Calculated using the 50% [[*Probability of Exceedance][POE]] for all [[*PhotoVoltaic Generation Resource][PVGRs]], proportionally allocated (using
+    the forecasting vendor's proprietary algorithm).
+    The sum of the STPPF for every PVGR is equal to the total ERCOT 50% POE forecast.
+*** Photovoltaic Generation Resource Production Potential
+    :PROPERTIES:
+    :ACRONYM:  PVGRPP
+    :END:
+    A rolling 168 hour forecast for each [[*PhotoVoltaic Generation Resource][PhotoVoltaic Generation Resource]]
+    that is used in financial settlements.
+    Calculated using the 80% [[*Probability of Exceedance][POE]] for all [[*PhotoVoltaic Generation Resource][PVGRs]], proportionally allocated (using
+    the forecasting vendor's proprietary algorithm).
+    The sum of the PVGRPP for every PVGR is equal to the total ERCOT 80% POE forecast.
+** Capacity Available Tool
+   :PROPERTIES:
+   :ACRONYM:  CAT
+   :END:
+   Run on-demand by ERCOT operators.
+   Using expected Generation schedules from [[*Current Operating Plan][COP]]s, and historical wind and load
+   forecast uncertainties, provides the ability to do the following for a six-hour
+   study window:
+   + Asssess risk of large increase in [[*Net Load][Net Load]]
+   + Estimate adequacy of scheduled Generation and Reserves to manage risk
+** Point of Interconnect
+   :PROPERTIES:
+   :ACRONYM:  POI
+   :END:
+   The location at which a generation resource is connected to the grid.
+** Primary Frequency Response
+   [[./attachments/ercot/img/primary-frequency-response.png]]
+** Real-Time Dispatch
+   Occurs during a single Operating Hour within an Operating Day.
+   Primary goals are:
+   - Manage reliability
+     - Match generation with demand
+     - Keep transmission flows within limits
+   - Operate system at least cost
+** Real-Time Energy Imbalance
+   A negative quantity indicates that a QSE is paid by ERCOT.
+   A positive quantity indicates that a QSE is charged by ERCOT.
+   
+   ~-1 * (supplies - obligations) * RTSPP~
+   
+   Components of supplies and obligations are calculated at each Settlement Point separately.
+   - supplies are the sum of metered generation, DAM energy purchases, and trade energy purchases
+   - obligations are the sum of metered load, DAM energy sales, and trade energy sales
+
+   Can also be written:
+
+   ~-[[DAM Energy Purchases + Trade Energy Purchases] - [DAM Energy Sales + Trade Energy Sales]] * RTSPP - [Metered Generation] * RTRMPR~
+   
+   - RTSPP is [[*Real-Time Settlement Point Price][Real-Time Settlement Point Price]]
+   - RTRMPR is [[*Real-Time Resource Meter Price][Real-Time Resource Meter Price]] 
+** Regulated Entity
+** Reliability Unit Commitment
+   :PROPERTIES:
+   :ACRONYM:  RUC
+   :END:
+   Dispatches Resources to provide more capacity if the market processes do not provide sufficient capacity.
+   Might instruct generators to start or (in rare cases) to go offline.
+   
+   Inputs:
+   - Offers
+   - Current Operating Plans
+   - Forecasted Conditions
+   - Network Model
+
+   Outputs:
+   - Either Resource Commitments or Nothing
+*** Day-Ahead Reliability Unit Commitment
+    :PROPERTIES:
+    :ACRONYM:  DRUC
+    :END:
+    Runs immediately after the DAM and studies capacity needs for all hours
+    of the next operating day.
+*** Hourly Reliability Unit Commitment
+    :PROPERTIES:
+    :ACRONYM:  HRUC
+    :END:
+    Runs hourly during the Operating Day and studies all the remaining hours for
+    the operating day, prioritizing the next few hours.
+** RUC Capacity Short Charge
+   When a Resource is committed by ERCOT through a [[*Reliability Unit Commitment][RUC]], the QSE is not paid, but
+   is guaranteed future payment.
+   If normal Real-Time revenues are not sufficient to cover costs for the
+   Resource to start and run, then the QSE gets a Make-Whole Payment from ERCOT.
+   ERCOT funds the Make-Whole Payment by collecting the RUC Capacity Short Charge
+   from QSEs that have [[*Capacity Shortfall][Capacity Shortfalls]].
+   
+   Whenever ERCOT commits capacity in a [[*Reliability Unit Commitment][RUC]] process, it calculates
+   each QSE's Capacity Shortfall both at the time the [[*Reliability Unit Commitment][RUC]] is executed
+   and at the close of the adjustment period the hour.
+   The larger of these two values is used to determine the shortfall charge.
+** Resource
+   Every Resource must be represented in the market by a Resource Entity.
+**** Generation
+     + One of the three "All-Inclusive Resource" types
+     + Capable of producing energy
+     + May also qualify for providing Ancillary Service capacity
+     + Must be connected to the ERCOT Transmission System
+     + Responds to dispatch instructions
+     + Must provide Reactive Power (for voltage support)
+     + Must provide Primary Frequency Response
+**** Load
+     + One of the three "All-Inclusive Resource" types
+     + Capable of curtailing consumption of energy
+     + May also qualify for providing Ancillary Service capacity
+***** Non-Controllable
+      + Not capable of following dispatch instructions from SCED
+      + Permitted to provide Responsive Reserve Ancillary Services that
+        operate by under-frequency relay or through verbal dispatch instruction
+***** Controllable
+      + Currently there are none registered in the ERCOT region
+      + Fully capable of following SCED dispatch instructions by smoothly increasing or decreasing enery consumption
+      + Permitted to provide all three types of Ancillary Services
+**** Non-Modeled Generator
+     For example, landfill power.
+     + One of the three "All-Inclusive Resource" types
+     + Registered with ERCOT and capable of producing energy
+     + Not allowed to provide Ancillary Services
+     + Not allowed to participate in the DAM
+     + Not allowed to receive RUC deployments
+     + Not allowed to follow SCED dispatch instructions
+     + Must be less than 10 MW unless it is registered with PUCT as a Self-Generator
+     + Settled at the Real-Time SPP for a Load Zone
+**** Emergency Response Service
+     :PROPERTIES:
+     :ACRONYM:  ERS
+     :END:
+     Provides services during an Energy Emergency Alert to assist in maintaining or restoring ERCOT system frequency.
+     QSEs may provide two types of services from their ERS resource fleet.
+     + Can be load that is capable of curtailment
+     + Can be a generator, but it cannot be registered as a Generation Resource with ERCOT and it cannot be an intermittent renewable generator
+     + Can be an aggregation of a load and a generator
+***** ERS-10
+      Must be fully dispatchable in 10 minutes.
+***** ERS-30
+      Must be fully dispatchable in 30 minutes.
+***** Weather-Sensitive
+      + Load that can be curtailed
+      + Allows consumers with increased consumption during peak hours to offer demand response during those hours
+      + Deployment during a single event cannot exceed three hours
+***** Non-Weather-Sensitive
+      + Load or generation that is not dependent on the weather
+      + Deployment during a single event cannot exceed twelve hours
+**** Peaker
+     Provides energy during high-demand or high-price events.
+**** Wholesale Storage Load
+     Stores energy when it is not wanted (during high supply and low demand, low prices, or high system frequency).
+     Releases energy when it is wanted (during high demand, high prices, or low system frequency).
+     Modeled as a load and generator pair.
+     
+     Must be metered separately from other facilities,
+     because the load for a Wholesale Storage Load
+     (the energy used for charging the resource) is settled differently than other load.
+     The load is settled at a Resource Node, meaning its price is localized,
+     unlike other loads, which are settled at geographical average prices.
+     The load is also exempt from Load Ratio Share charges and payments.
+     Releasing energy from the resource is treated the same as any other wholesale
+     energy sale.
+
+     Limited to the following technologies:
+     + Batteries
+     + Flywheels
+     + Compressed air energy storage (CAES)
+     + Pumped hydro-electric power
+     + Electro-chemical capacitors
+     + Thermal energy storage associated with turbine inlet chilling
+
+     Currently, only battery storage is actually deployed in ERCOT.
+**** Private Use Network
+     :PROPERTIES:
+     :ACRONYM:  PUN
+     :END:
+     An electric network connected to the ERCOT Transmission Grid that contains
+     Load that is not directly metered by ERCOT.
+     Typically occurs at a location where load is netted with internal generation.
+
+     May include any of the following:
+     + Generation Resource
+     + Load Resource
+     + Non-Modeled Generator
+     + ERS Resource
+     + Wholesale Storage Load
+** Security Constrained Economic Dispatch
+   :PROPERTIES:
+   :ACRONYM:  SCED
+   :END:
+   The system that performs Real-Time Dispatch.
+   Outputs (every 5 minutes):
+   - Resource Base Points (dispatch instructions for each available resource)
+   - Prices (Locational Marginal Prices)
+   Inputs:
+   - Energy Offer Curves from Resources
+   - System conditions
+     - Current Resource output
+     - For each transmission system path:
+       - Flow limits
+       - Current flows
+     - Current Load demand
+   - System capabilities (from Network Operations Model)
+** Settlement Point
+   A location at which energy in the ERCOT Market is settled. 
+*** Resource Node
+    Represents the point where a generator connects to the transmission system.
+    There is one Resource Node for each Generation Resource in ERCOT.
+    Provides a localized price for settling the output of the generator.
+*** Load Zone
+    Represents a geographical grouping of Loads.
+    Provides a regionalized price that reflects the delivery cost to that group of loads.
+    All Load is assigned to one specific Load Zone for settlement purposes.
+    There are 13 Load Zones in ERCOT.
+**** Competitive Load Zones
+     + North
+     + South
+     + West
+     + Houston
+**** Non Opt-in Entity Load Zones
+     + Austin Energy
+     + CPS Energy
+     + LCRA
+     + Rayburn Country Cooperative
+**** DC Tie Load Zones
+     There are five DC ties in ERCOT, and each one has its own Load Zone.
+*** Hub
+    Essentially represent an energy pricing point that is "in-between" Generators and Load centers.
+** Settlement Point Price
+   :PROPERTIES:
+   :ACRONYM:  SPP
+   :END:
+   The price for energy on the wholesale market at a [[*Settlement Point][Settlement Point]].
+   Settlement Point Prices are calculated from [[*Locational Marginal Price][Locational Marginal Prices]]
+*** Day-Ahead Settlement Point Price
+    Calculated hourly in the Day-Ahead Market.
+**** At Resource Node
+     Equal to the resource node LMP.
+**** At Load Zone
+     Equal to load-weighted average of LMPs within the load zone
+     (where load is measured at electrical buses within the load zone).
+     For example, if we have a Load Zone that contains four Eletrical Buses,
+     and the LMPs and fractions of load served are:
+     | LMP | Load Fraction |
+     |-----+---------------|
+     | $20 |           10% |
+     | $20 |           20% |
+     | $40 |           30% |
+     | $50 |           40% |
+     then the SPP for the Load Zone is $38.
+
+     Note that this means customers in the Load Zone don't pay the highest LMP,
+     but also don't pay the lowest.
+**** At a Hub
+     Equal to simple average of LMPs at the 345 kV buses that make up the Hub.
+*** Real-Time Settlement Point Price
+    :PROPERTIES:
+    :ACRONYM:  RTSPP
+    :END:
+    - LMPs calculated every five minutes.
+    - Settlement Point Prices calculated in 15 minute intervals.
+    - Real-time Online Reserve Price Adder every five minutes.
+    Start of SPP calculation period does not always align with start of an LMP
+    calculation period.
+    Start of Online Reserve Price Adder calculation period does not always
+    align with start of an LMP calculation period.
+**** At Resource Node
+     ~RTSPP = RTRSVPOR + RTRDP + Time-Weighted Average (LMPs)~
+     Time-weighted average of real-time LMPs at the resource node plus a
+     time-weighted average of Online Reserve Price Adders (Online Reserve Price).
+     (The period over which the time-weighted averages are calculated is the
+     15 minute settlement point price period).
+**** At Load Zone
+     1. Load-weighted average of LMPs across all Buses in Load Zone are calculated at each five minute interval
+     2. Time-weighted average of the load-weighted averages are calculated
+     (The period over which the time-weighted averages are calculated is the 15 minute settlement point price period).
+     Settlement Point Price is (2) plus Online Reserve Price.
+**** At Hub
+     1. Time-weighted average of LMPs for each bus in Hub is calculated
+     2. Simple average of time-weighted averages is calculated across all buses
+     (The period over which the time-weighted averages are calculated is the 15 minute settlement point price period).
+     Settlement Point Price is (2) plus Online Reserve Price.
+** Real-Time Resource Meter Price
+   :PROPERTIES:
+   :ACRONYM:  RTRMPR
+   :END:
+   ~RTRMPR = RTRSVPOR + RTRDP + (Base-Point * Time) Weighted Average (LMPs)~
+   
+   Used for the settlement of energy production.
+   Determined for every 15-minute period of time during an operating day.
+   RTRSVPOR is [[*Real-Time Reserve Price for On-Line Reserves][Real-Time Reserve Price for On-Line Reserves]].
+   RTRDP is [[*Real-Time On-Line Reliability Deployment Price][Real-Time On-Line Reliability Deployment Price]].
+** Real-Time Reserve Price for On-Line Reserves
+   :PROPERTIES:
+   :ACRONYM:  RTRSVPOR
+   :END:
+   A 15-minute ERCOT-wide value.
+** Real-Time On-Line Reliability Deployment Price
+   :PROPERTIES:
+   :ACRONYM:  RTRDP
+   :END:
+   A 15-minute ERCOT-wide value.
+** Startup Offer
+   All of the cost required to start a resource and reach its minimum operating level.
+** Subsynchronous Resonance
+   :PROPERTIES:
+   :ACRONYM:  SSR
+   :END:
+   Resonant currents in transmission lines of frequencies below 60 Hz.
+   May induce internal voltages in generators and damage them.
+   Guarded against by an Initial SSR screening by ERCOT, performed when a new
+   generation resource requests interconnection.
+   If the screening finds a chance that the proposed generator will become radial
+   to a series capacitor under some set of transmission outages, then the interconnecting
+   [[*Transmission Service Provider][Transmission Service Provider]] must conduct a Vulnerability Assessment.
+   If the assessment shows that the proposed generator is vulnerable to SSR,
+   countermeasures must be deployed by the interconnecting entity, and those
+   countermeasures must be deployed prior to Initial Synchronization of the resource.
+
+   Annual SSR review is also conducted by ERCOT for all generation resources in the
+   planning model.
+   If a generator is found to be vulnerable to SSR, then the [[*Transmission Service Provider][TSP]] that owns the affected
+   series-compensated line must conduct a Vulnerability Assessment.
+   If countermeasures are required, the [[*Transmission Service Provider][TSP]] is responsible for them, and they
+   must be deployed prior to the latter of completion of the transmission project that
+   introduces the vulnerability or the initial synchronization of the affected
+   generation resource.
+** System-Wide Offer Cap
+   :PROPERTIES:
+   :ACRONYM:  SWCAP
+   :END:
+   The maximum allowable Energy Offer and Ancillary Service Offer amount.
+   Currently:
+   + $9000/MWh for Energy Offers
+   + $9000/MW/h for Ancillary Services
+
+   Reduced if the accumulated Peaker Net Margin exceeds a threshold value.
+** Time Periods
+   [[./attachments/ercot/img/time-periods.png]]
+*** Operating Hour
+    A clock hour designated by the time at which the hour ends.
+    For instance, the hour from 02:00 to 03:00 is called "Hour Ending Oh-Three-Hundred".
+*** Day-Ahead
+    The calendar day prior to a given Operating Day.
+*** Operating Day
+    A 24-hour period divided into Operating Hours.
+*** Day-Ahead Engine
+    The primary process within the Day-Ahead period.
+    Begins at 10:00, when all bids and offers must be submitted, with results posted by 13:30.
+*** Adjustment Period
+    For a given Operating Hour, the Adjustment Period begins at 18:00 in the Day-Ahead, and ends an hour before the start of the Operating Hour.
+*** Hour Ahead
+    The time between the end of an Adjustment Period and the Operating Hour that corresponds to that Adjustment Period.
+*** Settlement Interval
+    15 minutes
+*** SCED Interval
+    5 minutes
+** Unit Reactive Limit
+   :PROPERTIES:
+   :ACRONYM:  URL
+   :END:
+   The MVAR level where a generator is operating in a lagging mode at maximum MW output
+   and 0.95 power factor.
+** Value of Lost Load
+   :PROPERTIES:
+   :ACRONYM:  VOLL
+   :END:
+   The value of avoiding load-shedding events.
+   Currently administratively set to $9000.
+** Verbal Dispatch Instruction
+   :PROPERTIES:
+   :ACRONYM:  VDI
+   :END:
+   Usage includes, but is not limited to:
+   + Deployments or load shed orders during an Energy Emergency Alert
+* Market Participants
+  :PROPERTIES:
+  :COLUMNS:  %25ITEM %ACRONYM
+  :END:
+** Congestion Revenue Rights Account Holder
+   :PROPERTIES:
+   :ACRONYM:  CRRAH
+   :END:
+   Required to complete a registration and qualification process with ERCOT.
+*** Relationships
+    | Strength  | Relationship   | Market Participant | Notes                                                                                                  |
+    |-----------+----------------+--------------------+--------------------------------------------------------------------------------------------------------|
+    | Sometimes | Buys CRRs From | ERCOT              | Purchases are through bidding in ERCOT auctions                                                        |
+    | Sometimes | Buys CRRs From | CRR Account Holder | Purchases are through bilateral agreement                                                              |
+    | Sometimes | Sells CRRs To  | CRR Account Holder | Sales are through bilateral agreement                                                                  |
+    | Sometimes | Same as        | QSE                | A company can register as both a QSE and a CRR Account Holder                                          |
+    | Sometimes | Same as        | LSE                | A company can register as both an LSE and a CRR Account Holder                                         |
+    | Sometimes | Same as        | RE                 | A company can register as both an RE and a CRR Account Holder                                          |
+    | Always    | Settles With   | ERCOT              | CRR Account Holder is either paid or charged by ERCOT for their CRRs based on day-ahead market prices. |
+** Consumer
+   Includes residential, commercial, and industrial consumers of electricity.
+   Connected to transmission or distribution lines.
+*** Relationships
+    | Strength | Relationship   | Market Participant  | Notes                                                            |
+    |----------+----------------+---------------------+------------------------------------------------------------------|
+    | Always   | Contracts With | Load Serving Entity | LSE provides consumer with electrical power at some retail rate. |
+** Distribution Service Provider
+   :PROPERTIES:
+   :ACRONYM:  DSP
+   :END:
+   Responsible for the physical delivery of energy to a Consumer.
+   A DSP is a Regulated Entity.
+   Own or operate a Distribution System for the delivery of energy from the transmission grid to consumers.
+   Usually DSP owns, installs, and reads electric meters.
+   *Consumers do not pay the DSP*.
+   Required to complete a registration and qualification process with ERCOT.
+*** Relationships
+    | Strength | Relationship       | Market Participant | Notes                                                                     |
+    |----------+--------------------+--------------------+---------------------------------------------------------------------------|
+    | Always   | Delivers Energy To | Consumer           | Consumer calls the DSP if they are having trouble with their electricity. |
+** Electric Reliability Council of Texas
+   :PROPERTIES:
+   :ACRONYM:  ERCOT
+   :END:
+   Organization charged with managing the flow of power for 90% of electric load in Texas.
+   Independent System Operator (ISO) for ERCOT region.
+   Maintains registration database of all retail customers.
+   Facilitates settlement for all wholesale transactions with registered Market Participants.
+*** Relationships
+    | Strength | Relationship                   | Market Participant          | Notes                                              |
+    |----------+--------------------------------+-----------------------------+----------------------------------------------------|
+    | Always   | Sends Dispatch Instructions To | Qualified Scheduling Entity | ERCOT sends instructions at least every 5 minutes. |
+    | Always   | Provides Data To               | Independent Market Monitor  |                                                    |
+** Independent Market Monitor
+   Identifies market rules or conduct by Market Participants that compromise the efficiency or distort the outcomes of the market.
+   Issues periodic reports assessing the competetive performance and operational efficiency of the market.
+   The Public Utility Commission of Texas hires the Independent Market Monitor.
+*** Relationships
+    | Strength | Relationship | Market Participant                 | Notes |
+    |----------+--------------+------------------------------------+-------|
+    | Always   | Reports To   | Public Utility Commission of Texas |       |
+** Load Serving Entity
+   :PROPERTIES:
+   :ACRONYM:  LSE
+   :END:
+   Provides electrical service to Consumers.
+   Must purchase sufficient power through the Wholesale Market to serve their Load.
+   Required to complete a registration and qualification process with ERCOT.
+*** Relationships
+    | Strength  | Relationship          | Market Participant          | Notes                                                                                                                   |
+    |-----------+-----------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------|
+    | Always    | Settles With          | Qualified Scheduling Entity | Settles with QSE for the power purchased or traded in the market.                                                       |
+    | Always    | Designates            | Qualified Scheduling Entity | ERCOT ultimately settles with QSEs for all power supplied by the LSE they represent, so every LSE must designate a QSE. |
+    | Sometimes | Obtains Power Via     | Qualified Scheduling Entity | May depend on a Qualified Scheduling Entity to obtain power needed to cover consumer load.                              |
+    | Always    | Collects Revenue From | Consumer                    | Collects revenue directly from consumers they have contracted with to provide power.                                 |
+    | Sometimes | Contracts With        | Resource Entity             | May also acquire power through trade contracts directly with Resource Entities.                                         |
+*** Types
+**** Competitive Retailer
+     Serves areas open to retail choice.
+**** Municipally Owned Utility or Electric Cooperative
+     Serves areas not open to retail choice.
+** Public Utility Commission of Texas
+   :PROPERTIES:
+   :ACRONYM:  PUCT
+   :END:
+   Regulates the State's electric utilities.
+   Handles Consumer complaints.
+*** Relationships
+    | Strength | Relationship | Market Participant | Notes |
+    |----------+--------------+--------------------+-------|
+    | Always   | Oversees     | ERCOT              |       |
+** Qualified Scheduling Entity
+   :PROPERTIES:
+   :ACRONYM:  QSE
+   :END:
+   Entity through which ERCOT interacts with the market for almost all operational purposes.
+   *May participate in market without representing LSE or RE at all*,
+   in which case they simply act as power marketers that buy and sell wholesale power.
+   Required to complete a registration and qualification process with ERCOT.
+   When a QSE is designated by an LSE, the QSE is financially responsible for Load.
+   When a QSE is designated by an RE, the QSE is financially and operationally responsible for Resources.
+*** Relationships
+    | Strength  | Relationship                 | Market Participant  | Notes                                                                                                                                                                |
+    |-----------+------------------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Sometimes | Represents                   | Load Serving Entity | QSE must be designated by LSE when LSE registers as a market participant.                                                                                            |
+    | Sometimes | Represents                   | Resource Entity     | QSE must be designated by RE when RE registers as a market participant.                                                                                              |
+    | Always    | Settles With                 | ERCOT               | QSE enters all trades, offers, and bids into ERCOT systems and then settles with ERCOT directly for all electricity that is bought and sold in the real-time market. |
+    | Sometimes | Sends Telemetry To           | ERCOT               | If the QSE represents an RE, then it is responsible for sending RE telemetry to ERCOT.                                                                               |
+    | Sometimes | Instructs                    | Resource Entity     | If the QSE represents an RE, then it is responsible for ensuring the RE receives and complies with ERCOT dispatch instructions.                                      |
+** Resource Entity
+   :PROPERTIES:
+   :ACRONYM:  RE
+   :END:
+   Owns or controls one or more Resources.
+   Ensures telemetry is installed and maintained at each Resource.
+   Required to complete a registration and qualification process with ERCOT.
+*** Relationships
+    | Strength | Relationship                                     | Market Participant          | Notes                                                                        |
+    |----------+--------------------------------------------------+-----------------------------+------------------------------------------------------------------------------|
+    | Always   | Designates                                       | Qualified Scheduling Entity |                                                                              |
+    | Always   | Sends Telemetry To                               | Qualified Scheduling Entity |                                                                              |
+    | Always   | Communicates Outages To                          | ERCOT                       | RE enters planned and unplanned outages in ERCOT Outage Coordination System. |
+    | Always   | Provides Technical & Operational Capabilities To | ERCOT                       | ERCOT uses specs REs in its network model.                                   |
+** Transmission Service Provider
+   :PROPERTIES:
+   :ACRONYM:  TSP
+   :END:
+   Owns or operates transmission facilities used for transmission of electricity.
+   A TSP is a Regulated Entity.
+   Provides transmission service in the ERCOT system.
+   Connects Generators either directly to large Consumers or Distribution Systems for delivery to Consumers.
+   Required to complete a registration and qualification process with ERCOT.
+*** Relationships
+    | Strength | Relationship              | Market Participant | Notes                                                         |
+    |----------+---------------------------+--------------------+---------------------------------------------------------------|
+    | Always   | Provides Telemetry To     | ERCOT              | ERCOT uses telemetry to manage the electrical system.         |
+    | Always   | Provides Modeling Data To | ERCOT              | Data includes equipment, transmission lines, and connections. |
+** Independent Market Information System Registered Entity
+   :PROPERTIES:
+   :ACRONYM:  IMRE
+   :END:
+   A Market Participant that exists for the sole purpose of accessing the [[*Market Information System][MIS]] Secure Area.
+   http://www.ercot.com/services/rq/imre
+* Ideas/Scratchpad
+  What would happen if a new generator came online along a transmission line
+  operating at 70% capacity that carried power from a coal plant? If the new
+  generation was cheaper than coal and powerful enough to saturate the
+  transmission line, and then some, would it be PHYSICALLY bumping the coal
+  plant offline (in addition to economically bumping it offline)? If so, would
+  a cheap (or even profitable) way to decomission a coal plant be to
+  strategically position a different generator along its transmission line?
+  Would it be possible to even just subsidise generators along that existing
+  transmission line so that they are always bumped up in the merit order ahead
+  of coal?
+
+  ERCOT adds transmission losses to the LOAD, meaning that consumers are the
+  ones that pay for an inefficient transmission system, rather than generators.
+  
+  As of 2017, there were about 78 GW of capacity in ERCOT, and the peak demand
+  record was 71 GW on August 11, 2016.
+* Modeling
+** Public Data
+*** Transmission Constraints
+**** [[https://mis.ercot.com/public/data-products/grid/generation?id=NP5-755-CD][Hourly RUC Active and Binding Transmission Constraints]]
+     | DeliveryDate | HourEnding | RUCTimeStamp        | ConstraintID | ConstraintName | ContingencyName | Limit | Value | ViolationAmount | FromStation | ToStation | FromStationkV | ToStationkV | DSTFlag |
+     |--------------+------------+---------------------+--------------+----------------+-----------------+-------+-------+-----------------+-------------+-----------+---------------+-------------+---------|
+     | 04/17/2021   |      11:00 | 04/17/2021 08:03:01 |            1 | LOYOLA_69_1    | SKLELOY8        |    40 |    40 |               0 | LOYOLA      | LOYOLA    |           138 |          69 | N       |
+**** [[https://mis.ercot.com/public/data-products/grid/transmission?id=NP6-86-CD][SCED Shadow Prices and Binding Transmission Constraints]]
+     | SCEDTimeStamp       | RepeatedHourFlag | ConstraintID | ConstraintName | ContingencyName | ShadowPrice | MaxShadowPrice | Limit | Value | ViolatedMW | FromStation | ToStation | FromStationkV | ToStationkV | CCTStatus |
+     |---------------------+------------------+--------------+----------------+-----------------+-------------+----------------+-------+-------+------------+-------------+-----------+---------------+-------------+-----------|
+     | 04/03/2021 07:20:16 | N                |            1 | LGD_SANTIA1_1  | BASE CASE       |           0 |           9251 | 153.7 |  56.1 |      -97.6 | LGD         | SANTIAGO  |           138 |         138 | NONCOMP   |
+*** Electrical Buses
+    https://mis.ercot.com/public/data-products/markets/day-ahead-market?id=NP4-160-SG
+** Private Data
+*** CIM Network Model
+    + http://mydocs.epri.com/docs/publicmeetingmaterials/1009/4znave2tn5e/e234888_2_5_cim_model_ercot.pdf
+    + https://mis.ercot.com/public/data-products/grid/modeling?id=NP3-462-SG
+
+** Open Source Code
+   + https://github.com/ITDProject/ERCOTTestSystem
+
+* Nodal Protocols
+  + Complete: http://www.ercot.com/content/wcm/libraries/227367/March_15__2021_Nodal_Protocols.pdf
+  + Charge-Type Matrix: http://mis.ercot.com/misapp/GetReports.do?reportTypeId=12363&reportTitle=Settlements%20Charge%20Matrix&showHTMLView=&mimicKey
