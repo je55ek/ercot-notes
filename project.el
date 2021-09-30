@@ -8,7 +8,7 @@
 (setq org-re-reveal-title-slide nil)
 
 (let ((org-dir (expand-file-name "./org/"))
-      (site-dir (expand-file-name "./generated")))
+      (site-dir (expand-file-name "./docs")))
   (setq org-publish-project-alist
         `(("ercot-notes-org"
 	         :base-directory ,org-dir
